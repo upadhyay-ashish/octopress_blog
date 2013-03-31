@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Rubymotion for iOS application development]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2013/03/23/Rubymotion/"/>
+    <updated>2013-03-23T00:00:00+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2013/03/23/Rubymotion</id>
+    <content type="html"><![CDATA[<h2>TCS RSS Feed Reader  123</h2>
+
+<p><a href="https://github.com/upadhyay-ashish/TCSRssReader">TCS RSS Feed</a></p>
+
+<p>This is an iOS application build using</p>
+
+<ul>
+<li><a href="http://rubymotion.com/">Rubymotion</a></li>
+<li><a href="http://gembundler.com/">Bundler</a></li>
+<li><a href="http://cocoapods.org/">CocoaPods</a></li>
+<li><a href="https://github.com/siuying/NanoStoreInMotion">NanoStoreInMotion</a></li>
+<li><a href="www.pixate.com">Pixate iOS Styling Framework</a></li>
+</ul>
+
+
+<h3>Running on Simulator/Device</h3>
+
+<p>You will need Rubymotion installed on your Mac.</p>
+
+<ol>
+<li>Clone repo <code> git clone git@github.com:upadhyay-ashish/TCSRssReader.git</code></li>
+<li>Bundle gems <code> bundle install </code></li>
+<li>Setup cocoapods <code> pod setup </code></li>
+<li>Setup Developer license reference in the Rakefile</li>
+<li>To run on simulator <code> rake </code> else to run on a Device <code> rake device </code></li>
+<li>To create a distribution IPA <code> rake archive:distribution </code></li>
+</ol>
+
+
+<h3>Screenshots</h3>
+
+<p>  <img src="http://ashish-upadhyay.com/images/March-23-2013/icon.png" alt="Alt Icon" />  <img src="http://ashish-upadhyay.com/images/March-23-2013/menu.png" alt="Alt Icon" /><br/>
+  <img src="http://ashish-upadhyay.com/images/March-23-2013/events.png" alt="Alt Icon" />  <img src="http://ashish-upadhyay.com/images/March-23-2013/news.png" alt="Alt Icon" /> <br/>
+  <img src="http://ashish-upadhyay.com/images/March-23-2013/press_releases.png" alt="Alt Icon" /></p>
+
+<h3>Suggestions ?</h3>
+
+<p>Please log an issue <a href="https://github.com/upadhyay-ashish/TCSRssReader/issues">here</a></p>
+
+<p><a href="ashish.upadhyaye@gmail.com">ashish.upadhyaye@gmail.com</a></p>
+
+<hr />
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Replacing master with a branch GIT]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2013/02/25/Replacing-master-with-a-branch-GIT/"/>
+    <updated>2013-02-25T17:19:27+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2013/02/25/Replacing-master-with-a-branch-GIT</id>
+    <content type="html"><![CDATA[<h3>This will help us to overwrite the master branch with a new branch incase the new branch is in a better state than the master</h3>
+
+<pre><code>    git checkout seotweaks
+    git merge -s ours master
+    git checkout master
+    git merge seotweaks  
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Oracle JDBC with JRuby on Mac OSx]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx/"/>
+    <updated>2013-01-08T21:02:14+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx</id>
+    <content type="html"><![CDATA[<h3>Please follow the below steps to create a jruby library to connect to any oracle database on Mac OS x using Java ODBC drivers.</h3>
+
+<ul>
+<li>Create the Library folder and the Ruby file. eg <code>Sample.rb</code></li>
+<li>Add Gemfile to enable using jruby to connect to the database</li>
+<li><p>Add the following gems to the Gemfile</p>
+
+<pre><code>gem 'activerecord'
+gem "activerecord-jdbc-adapter"
+</code></pre></li>
+<li><p>In the ruby file Sample.rb here please use the following lines and then write appropriate  code to access the data.</p>
+
+<pre><code>class Person &lt; ActiveRecord::Base
+    establish_connection(
+      :adapter  =&gt; 'jdbc',
+      :driver   =&gt; 'oracle.jdbc.driver.OracleDriver',
+      :url      =&gt; 'jdbc:oracle:thin:@server:port/sid',
+      :username =&gt; 'ors',
+      :password =&gt; 'ors'
+      )
+      self.table_name = :table_name_here
+        def self.all
+          connection.select_all &lt;&lt;-SQL
+                  select * from table_name_here
+             SQL
+        end
+ end
+</code></pre></li>
+<li><p>Go to terminal ,run</p>
+
+<pre><code>bundle install 
+jruby Sample.rb
+</code></pre></li>
+<li><p>If there is a driver not found error please download the driver from oracle site here
+and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using nested_forms gem + dropbox-paperclip + twitter-bootstrap]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/"/>
+    <updated>2012-12-08T13:55:52+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-+-dropbox-paperclip-+-twitter-bootstrap</id>
+    <content type="html"><![CDATA[<h4>This is a tutorial about using nested_forms gem with dropbox-paperclip plugin on Heroku to create a multiple photo upload albums interface with twitter bootstrap</h4>
+
+<p><a href="http://ashish-albums.herokuapp.com">Demo application</a></p>
+
+<ul>
+<li>Create a new rails app and add the gems to Gemfile.**</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>paperclip
+        paperclip-dropbox
+        nested_form</code></pre>
+</div>
+
+
+<ul>
+<li><p>Create 3 models**<br/>
+ <div>
+<pre><code class='ruby'>rails g model User name:string</p>
+
+<pre><code>  rails g model Album name:string user_id:integer
+  rails g model Photo tags_name:string album_id:integer&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+<p></div></p></li>
+<li><p>Adding relationships among models</p>
+
+<h4>in app/models/user.rb</h4></li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>has_many :albums, :dependent =:destroy  
+        accepts_nested_attributes_for :albums  
+        attr_accessible :name, :albums_attributes  
+        validates_presence_of :name    
+        belongs_to :user   
+        has_many :photos, :dependent =:destroy  
+        accepts_nested_attributes_for :photos, :allow_destroy =true  
+        attr_accessible :name, :photos_attributes  
+        validates_presence_of :name   
+        belongs_to :album  
+        attr_accessible :avatar, :tags_name  
+        has_attached_file :avatar,  
+        :storage =:dropbox,  
+        :dropbox_credentials =&quot;#{Rails.root}/config/dropbox.yml&quot;,  
+        :styles ={ :thumb =&quot;100x100&quot; },  
+        :dropbox_options ={  
+        :path =proc { |style| &quot;#{style}/#{id}_#{avatar.original_filename}&quot;}  
+        }  
+        validates_presence_of :avatar</code></pre>
+</div>
+
+
+<ul>
+<li>Adding a controller and a few actions**</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails g controller Users 
+        add following code to the controller 
+        def index  
+         @users = User.all  
+        end  
+          
+        def new  
+         @user = User.new  
+        end  
+          
+        def create  
+         @user = User.new(params[:user])  
+         if @user.save  
+          redirect_to root_url  
+          else  
+           redirect_to root_url  
+         end  
+        end  
+          
+        def show_albums  
+         @albums = Album.find(params[:id])  
+        end  
+          
+        def destroy  
+         @user = User.find(params[:id])  
+         @user.destroy  
+         redirect_to root_url  
+        end</code></pre>
+</div>
+
+
+<ul>
+<li>Adding routes to routes.rb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>resources :users do  
+         member do  
+         get 'show_albums'  
+         end  
+        end  
+        root :to ='users#index'</code></pre>
+</div>
+
+
+<ul>
+<li>Creating views for forms and data show</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>index.html.erb
+        new.html.erb
+        show_albums.html.erb
+        _album_fields.html.erb
+        _photo_fields.html.erb</code></pre>
+</div>
+
+
+<ul>
+<li>Adding form html to views**
+
+<h4>in index.html.erb :**</h4></li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;%= link_to 'New User', new_user_path , :class =&gt; 'btn btn-medium btn-primary pull-right'%&gt;
+        &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Album Names&lt;/th&gt;
+        &lt;!--th&gt;Tags&lt;/th--&gt;
+        &lt;th&gt;Destroy&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;% @users.each do |user| %&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;%= user.name %&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;% (user_albums_link user).each do |album_link| %&gt;
+            &lt;%= album_link.html_safe %&gt;
+          &lt;% end %&gt;
+         &lt;% thumbnails = show_photo_thumbnails(user.albums) if user.albums %&gt;
+         &lt;% if thumbnails %&gt;
+            &lt;% thumbnails.each do |thumb| %&gt;
+              &lt;%= thumb.html_safe  %&gt;
+            &lt;% end %&gt;
+         &lt;% end %&gt;
+        &lt;/td&gt;
+        &lt;!--td&gt;
+          &lt;%#= tags user.albums %&gt;
+        &lt;/td--&gt;
+        &lt;td&gt;
+            &lt;%= link_to t('.destroy', :default =&gt; t(&quot;helpers.links.destroy&quot;)),
+              user_path(user),
+              :method =&gt; :delete,
+              :data =&gt; { :confirm =&gt; t('.confirm', 
+              :default =&gt; t(&quot;helpers.links.confirm&quot;, :default =&gt; 'Are you sure?')) },
+              :class =&gt; 'btn btn-mini btn-danger' %&gt;
+        &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;% end %&gt;
+        &lt;/table&gt;
+        &lt;br /&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in new.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;%= nested_form_for @user, :html =&gt; { :multipart =&gt; true } do |f| %&gt;
+        &lt;div class=&quot;controls&quot;&gt;
+          Username :
+          &lt;%= f.text_field :name, :class =&gt; 'text_field' %&gt;
+        &lt;/div&gt;
+        &lt;%= f.fields_for :albums %&gt;
+        &lt;%= f.link_to_add &quot;Add an album&quot;, :albums %&gt;
+        &lt;br /&gt;
+        &lt;br /&gt;
+        &lt;div class=&quot;controls&quot;&gt;
+          &lt;%= f.submit nil, :class =&gt; 'btn btn-primary' %&gt;
+        &lt;/div&gt;
+        &lt;% end %&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in _album_fields.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;div class=&quot;controls&quot;&gt;
+          Album Name :
+          &lt;%= f.text_field :name, :class =&gt; 'text_field' %&gt;
+          &lt;%= f.link_to_remove &quot;Remove this album&quot; %&gt;
+          &lt;%= f.fields_for :photos %&gt;
+            &lt;p&gt;
+            &lt;%= f.link_to_add &quot;Add a photo&quot;, :photos %&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in _photo_fields.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;div class=&quot;controls offset1&quot;&gt;
+          File :
+          &lt;%= f.text_field :tags_name %&gt;
+          &lt;%= f.file_field :avatar %&gt;
+          &lt;%= f.link_to_remove &quot;Remove this photo&quot; %&gt;
+        &lt;/div&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in show_albums.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;% thumbnails = get_photos(@albums) if @albums %&gt;
+         &lt;% if thumbnails %&gt;
+            &lt;% thumbnails.each do |thumb| %&gt;
+              &lt;%= thumb.html_safe  %&gt;
+            &lt;% end %&gt;
+         &lt;% end %&gt;
+         &lt;%= show_tags @albums %&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>Add dropbox.yml in config folder with following data :**</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>app_key:    
+        app_secret:    
+        access_token:    
+        access_token_secret:    
+        user_id:</code></pre>
+</div>
+
+
+<ul>
+<li><p>These variables are Environment variables in environments files.</p></li>
+<li><p>For detailed setup for paperclip-dropbox gem <a href="https://github.com/janko-m/paperclip-dropbox">paperclip-dropbox</a></p></li>
+<li>Setup Twitter Bootstrap **</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails generate bootstrap:install less  
+        rails g bootstrap:layout application fixed**Step 10 : Run the application :**  
+        bundle  
+        rake db:create  
+        rake db:migrate  
+        rails s</code></pre>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cloning a specific GIT branch from a repository]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/10/22/Cloning-a-specific-GIT-branch-from-a-repository/"/>
+    <updated>2012-10-22T13:45:13+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/10/22/Cloning-a-specific-GIT-branch-from-a-repository</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Clone the master branch</p>
+
+<pre><code>  git clone &lt;repo master&gt;
+</code></pre></li>
+<li><p>Clone the specific GIT branch</p>
+
+<pre><code>  git fetch origin +branchname:branchname
+</code></pre></li>
+<li><p>Switch to the branch</p>
+
+<pre><code>  git checkout branchname
+</code></pre></li>
+<li><p>Check the file difference between the master and the branch</p>
+
+<pre><code>  git diff --name-status master..sibos
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <updated>2012-09-28T00:33:52+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Install <code>git-svn</code> on ubuntu or linux</p>
+
+<pre><code>  git-svn clone &lt;svn repo link&gt;  my_project  
+</code></pre></li>
+<li><p>You need to do a bit of post-import cleanup. For one thing, you should clean up the weird references that git svn set up. First you’ll move the tags so they’re actual tags rather than strange remote branches, and then you’ll move the rest of the branches so they’re local.<br/>
+To move the tags to be proper Git tags, run</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/tags/* .git/refs/tags/  
+  rm -Rf .git/refs/remotes/tags  
+</code></pre></li>
+<li><p>This takes the references that were remote branches that started with tag/ and makes them real (lightweight) tags.
+Next, move the rest of the references under refs/remotes to be local branches:</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/* .git/refs/heads/  
+  rm -Rf .git/refs/remotes  
+</code></pre></li>
+<li><p>Now all the old branches are real Git branches and all the old tags are real Git tags. The last thing to do is add your new Git server as a remote and push to it. Here is an example of adding your server as a remote:</p>
+
+<pre><code>  git remote add origin git@my-git-server:myrepository.git  
+</code></pre></li>
+<li><p>Because you want all your branches and tags to go up, you can now run this</p>
+
+<pre><code>  git push origin --all  
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Readline error Ubuntu]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/08/11/Fix-Readline-error-Ubuntu/"/>
+    <updated>2012-08-11T00:48:12+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/08/11/Fix-Readline-error-Ubuntu</id>
+    <content type="html"><![CDATA[<pre><code>    sudo apt-get install libreadline-dev
+
+    cd ~/.rvm/src/ruby-1.8.7-p249/ext/readline
+
+    ruby extconf.rb &amp;&amp; make &amp;&amp; make install
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Capistrano]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/08/10/Capistrano-%2B-GIT-%3A-Too-many-arguments-while-deployment/"/>
+    <updated>2012-08-10T00:00:00+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/08/10/Capistrano-+-GIT-:-Too-many-arguments-while-deployment</id>
+    <content type="html"><![CDATA[<h2>Too many arguments while deployment</h2>
+
+<p><strong>Issue : shell command failed with return code 33024</strong></p>
+
+<p>It&#8217;s a <code>ruby + git clone + windows</code> issue.</p>
+
+<p><strong> If we chain commands with while calling system(cmd) from ruby, chaining <code>git clone</code> with other commands is not fine. Git clone perceives the chained commands as its own continuation, i.e. as a destination directory, unless I run it from the command line.
+</strong></p>
+
+<p>As we couldn&#8217;t find any references or solutions to this problem on the internet, I put a hack to capistrano code, so <code>git clone</code> is executed separately.</p>
+
+<p>In<br/>
+<code>
+ruby-directory\lib\ruby\gems\1.8\gems\capistrano-2.5.18\lib\capistrano\recipes\deploy\strategy\base.rb
+</code></p>
+
+<p><strong> after the line 53 (cmd = cmd.split&#8230;) </strong>
+add the following lines:</p>
+
+<pre>
+<code>
+if cmd =~ /\s\&\&\s/ && cmd =~ /^git\s+clone/
+   cmd1, cmd = cmd.split(" && ", 2)
+   super(cmd1)
+end
+</code>
+</pre>
+
+
+<p>it checks if it&#8217;s a chained command and the first command is &#8220;git clone&#8221;, and if such it executes it separately. It may not work for all possible cases.</p>
+
+<h3>Also you can try using ubuntu from your local.</h3>
+
+<hr />
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing RMagick with Imagemagic on Windows 7/Vista]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7/"/>
+    <updated>2012-08-09T14:00:18+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7</id>
+    <content type="html"><![CDATA[<p>Working with Windows 7 64bit and Ruby 1.9.3.</p>
+
+<ul>
+<li><p>Install Ghostscript</p>
+
+<pre><code>  &lt;code&gt;http://downloads.sourceforge.net/project/ghostscript/GPL%20Ghostscript/9.05/gs905w32.exe&lt;/code&gt;
+</code></pre></li>
+<li><p>Install Imagemagick<br/>
+Use the 32 bit version, 64bit is not working.<br/>
+<a href="http://www.imagemagick.org/download/binaries/ImageMagick-6.7.6-1-Q16-windows-dll.exe">Imagemagick</a></p>
+
+<pre><code>  Install dev headers (Check!)
+  Install into C:\opt\
+</code></pre></li>
+<li><p>Restart the console/cmd prompt/IDE/.. or just restart windows to make Imagemagick commands available</p></li>
+<li><p>Install rmagick</p></li>
+</ul>
+
+
+<blockquote><pre><code></code>
+    gem install rmagick &#8211;platform=ruby &#8211; &#8211;with-opt-lib=C:/opt/ImageMagick-6.7.6-Q16/lib 
+    &#8211;with-opt-include=c:/opt/ImageMagick-6.7.6-Q16/include
+</pre></blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating a native iOS application !]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application/"/>
+    <updated>2012-06-13T19:47:34+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application</id>
+    <content type="html"><![CDATA[<h3>Installing XCode on the system</h3>
+
+<ul>
+<li>Download and install <code>XCode</code> from the App Center alongwith the <code>Developer Tools</code></li>
+</ul>
+
+
+<h3>Download the Phonegap SDK</h3>
+
+<ul>
+<li>Download and unzip the Phonegap SDK.</li>
+<li>Now navigate to the <code>iOS directory</code> in the extracted source and run the <code>Cordova-1.7.0.dmg</code> and install it.</li>
+</ul>
+
+
+<h3>Creating a XCode Project</h3>
+
+<p>Run <code>XCode</code> and create a new Project</p>
+
+<p>Select the template</p>
+
+<ul>
+<li><code>Cordova-based Application</code></li>
+</ul>
+
+
+<p>This will create the a new project and include the neccesary Phonegap API Files.</p>
+
+<h3>Changing the default compiler</h3>
+
+<ul>
+<li>Click on the application name and select <code>BUILD SETTINGS</code> tab in the center pane</li>
+<li>Change the compiler in the <code>BUILD OPTIONS</code> from <code>APPLE LLVM COMPILER</code> to <code>LLVM GCC</code></li>
+</ul>
+
+
+<h3>Build and Run the Project</h3>
+
+<ul>
+<li>Click on the left top of the XCode window selecting the default device as iPad/iPhone Now run the Project. This would invoke the simulator and run the application on it.</li>
+<li>Once the application runs a error will Popup stating the <code>index.html</code> is not found. Close the simulator and return back to the XCode project window.</li>
+</ul>
+
+
+<h3>Include <code>www</code> folder in the project to start with application development</h3>
+
+<ul>
+<li>Right click the project name and select <code>Show in Finder</code></li>
+<li>Drag the <code>www</code> folder from the <code>Finder</code> to the <code>Project</code></li>
+<li>A window pop&#8217;s up , select to create references to the files.</li>
+</ul>
+
+
+<h3>Again <code>BUILD &amp;amp; RUN</code></h3>
+
+<ul>
+<li>Now again build and run the project in an iPad/iPhone simulatore</li>
+<li>This time it would show up the <code>index.html</code> which is located in the <code>www</code> folder. Also it would show up the <code>Dialog</code> stating that Phonegap was successfully integrated in the application</li>
+</ul>
+
+
+<h3>Download JQuery Mobile bundle</h3>
+
+<p>Download the latest build of JQuery Mobile from  Unzip the contents and add the files in the <code>www</code> folder categorizing the folders as</p>
+
+<ul>
+<li><code>javascripts</code></li>
+<li><code>stylesheets</code></li>
+<li>`images&#8217;</li>
+</ul>
+
+
+<h3>Including the JQuery mobile in the application</h3>
+
+<ul>
+<li>Open <code>index.html</code> and create references to the javascript and css files located in the <code>www</code> folder using the html tags</li>
+</ul>
+
+
+<h4>Add a few lines of HTML to the index page and use the JQuery classes and the Phonegap api function calls to implement the features of the native application as desired</h4>
+
+<h3>* not tested though</h3>
+
+<ul>
+<li>Once the application is complete or for on Device testing a <code>Apple's Developer License</code> is required to sign the applications.</li>
+<li>After signing it , push the application to <code>PhoneGap Build</code> .</li>
+<li>Download the build package and deploy to th Device.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up Rhomobile with an Android Emulator]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/02/11/Setting-up-RHODES-with-an-Android-Emulator/"/>
+    <updated>2012-02-11T00:00:00+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/02/11/Setting-up-RHODES-with-an-Android-Emulator</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Installing Ruby. Please follow the sequence of commands given below to install ruby on ubuntu using RVM.</p>
+
+<pre><code>  sudo apt-get install git  
+  sudo apt-get install curl  
+  bash -s stable &amp;lt;  $ rvm pkg install zlib  
+  rvm pkg install openssl  
+  rvm install ruby-1.8.7-p334  
+  rvm alias create default ruby-1.8.7-p334
+</code></pre></li>
+<li><p>Download Android-sdk for linux</p>
+
+<pre><code>  [Android SDK Download](http://dl.google.com/android/android-sdk_r16-linux.tgz)
+</code></pre></li>
+<li><p>Download Android-ndk for linux</p>
+
+<pre><code>  [Android NDK Download](http://dl.google.com/android/ndk/android-ndk-r7-linux-x86.tar.bz2)
+</code></pre></li>
+<li><p>Extract both the zip files in two different folder&#8217;s.</p></li>
+<li><p>Java is needed to be installed in the system.If not then download the Java SDK zip files from</p>
+
+<pre><code>  [Java SDK 7 Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u2-download-1377129.html)
+</code></pre></li>
+<li><p>Open the terminal and install the rhodes gem.</p>
+
+<pre><code>  &lt;code&gt; gem install rhodes  &lt;/code&gt;  
+</code></pre>
+
+<p>the installation of the gem will take time as the size of the gem is &lt; 50 MB</p></li>
+<li><p>After the gem installation ,type</p>
+
+<pre><code>  &lt;code&gt;rhodes-setup&lt;/code&gt;
+</code></pre>
+
+<p>at the terminal .The screen should come up something like this :
+<img src="http://2.bp.blogspot.com/-uM0CgKEDFsw/TzZMJ6ijPmI/AAAAAAAAACE/q4_DxHJpnmE/s1600/Screenshot+at+2012-02-11+16:28:15.png" alt="Alt pik" /></p>
+
+<p>  Now type in the directories where you extracted the</p>
+
+<pre><code>  Java SDK    
+  Android SDK    
+  Android NDK   
+</code></pre></li>
+<li><p>Setting up the environment is complete.</p></li>
+</ul>
+
+
+<p><strong>Now we will generate a demo application using rhodes to test the emulator.</strong></p>
+
+<ul>
+<li><p>Setting up Android SDK to host an emulator of a specific android version.</p></li>
+<li><p>Go to the directory where you extracted the sdk .Then go into the tools folder in the sdk and click on a file name <strong>&#8220;android&#8221;</strong>.A window opens up : 3. Click on the checkbox Android 3.0 , this selects all the checkboxes in this group.Now click on install wait for a few minutes.</p></li>
+<li><p>Now open your terminal and generate a new rhodes application.</p>
+
+<pre><code> rhogen app Demo 
+ cd Demo 5. 
+</code></pre>
+
+<p> Edit the built.yml file in any text editor to change the android version to 3.0 instead of default 2.1 and add an emulator name.</p></li>
+<li><p>Now go back to the terminal and type</p>
+
+<pre><code> rake run:android 
+</code></pre></li>
+<li><p>The android emulator will show up in a few minutes and load the rhomobile application . <br/>
+Now we can go forward designing the mobile application.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql</code></pre>
+</div>
+
+
+<ul>
+<li>Creating a User model</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string</code></pre>
+</div>
+
+
+<ul>
+<li>Add a MIME type in \config\initializers\mime_type.rb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>Mime::Type.register 'application/vnd.ms-excel', :xls</code></pre>
+</div>
+
+
+<ul>
+<li>Add a xls format output to the method in the Controller</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>def index
+      @users = User.all
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xls
+        format.xml  { render :xml =&gt; @users }
+      end
+    end</code></pre>
+</div>
+
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users</p></li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;
+
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;City&lt;/th&gt;
+        &lt;th&gt;Gender&lt;/th&gt;
+        &lt;th&gt;Phone&lt;/th&gt;
+        &lt;th&gt;Address&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+
+    &lt;% @users.each do |user| %&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;%= user.name %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.city %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.gender %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.phone %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.address %&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;% end %&gt;
+    &lt;/table&gt;
+
+    &lt;br /&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>The text in the <th> tags are the headers and <td> tags are the data for the specified columns</li>
+<li>Adding the link to export excel on the Index page</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>`&lt;%= link_to 'Export XLS', url_for(:format =&gt; 'xls') %&gt;`</code></pre>
+</div>
+
+
+<ul>
+<li>This will allow the data on index page to be exported in Excel Format</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
+    <updated>2011-11-11T01:45:45+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
+    <content type="html"><![CDATA[<h2>For rails 3</h2>
+
+<p>Action Mailer allows you to send email from your application using a mailer
+model and views.</p>
+
+<p>This tutorial is about how to send an email using gmail free service in Ruby on Rails 3 and above</div></p>
+
+<h3>Creating Demo project</h3>
+
+<div>
+  <pre><code class='ruby'>rails new mail_demo –d mysql</code></pre>
+</div>
+
+
+<h3>Creating a User model</h3>
+
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string</code></pre>
+</div>
+
+
+<h3>Creating a Mailer model</h3>
+
+<div>
+  <pre><code class='ruby'>rails g mailer user_mailer</code></pre>
+</div>
+
+
+<h3>Setting up the development.rb for configuring application settings to</h3>
+
+<p>access mail smtp server</p>
+
+<h4>In development.rb</h4>
+
+<div>
+  <pre><code class='ruby'>config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+     :enable_starttls_auto =&amp;gt; true,
+     :address =&amp;gt; 'smtp.gmail.com',
+     :port =&amp;gt; 587,
+     :domain =&amp;gt; 'your.domain.com',
+     :authentication =&amp;gt; :login,
+     :content_type =&amp;gt; &quot;text/html&quot;,
+     :user_name =&amp;gt; 'username',
+     :password =&amp;gt; 'password'
+    }
+
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true</code></pre>
+</div>
+
+
+<p>Remember these are the basic settings needed to send mails from gmail ,other server may
+have different settings.</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :</p>
+
+<div>
+  <pre><code class='ruby'>def send_email(user)
+       recipients  user.email
+       from        &quot;webmaster@example.com&quot;
+       subject     &quot;Thank you for Registering&quot;
+       part :content_type =&gt; &quot;text/html&quot;,
+        :body =&gt; render_message(&quot;registration_confirmation&quot;, :user =&gt; user)
+    end</code></pre>
+</div>
+
+
+<h3>Creating Email Template</h3>
+
+<div>
+  <pre><code class='ruby'>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;gt;
+    h3 { color: #f00; }
+    ul { list-style: none; }
+    Your account signup details are below
+    Name:  
+    Login: 
+    Image: 
+    Content:</code></pre>
+</div>
+
+
+<p>The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
+run the server and try creating a new user . The email is sent to the address
+the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer 2.3.9]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
+    <updated>2011-11-11T01:35:14+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
+    <content type="html"><![CDATA[<h1>Easy email delivery and testing</h1>
+
+<p>Action Mailer allows you to send email from your application using a mailer model and views.<br/>
+This tutorial is about how to send an email using gmail free service in Ruby on Rails 2.3.9, for versions higher than this refer rails guides .</p>
+
+<h3>Creating Demo project</h3>
+
+<div>
+  <pre><code class='ruby'>rails mail_demo –d mysql</code></pre>
+</div>
+
+
+<h3>Creating a User model</h3>
+
+<div>
+  <pre><code class='ruby'>ruby script/generate scaffold User name:string email:string content:string</code></pre>
+</div>
+
+
+<h3>Creating a Mailer model</h3>
+
+<div>
+  <pre><code class='ruby'>ruby script/generate mailer user_mailer</code></pre>
+</div>
+
+
+<h3>Setting up the development.rb for configuring application settings to access mail smtp server</h3>
+
+<h4>In development.rb</h4>
+
+<div>
+  <pre><code class='ruby'>config.action_mailer.delivery_method = :smtp
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.smtp_settings = {
+     :enable_starttls_auto =true,
+     :address ='smtp.gmail.com',
+     :port =587,
+     :domain ='your.domain.com',
+     :authentication =:login,
+     :content_type =&quot;text/html&quot;,
+     :user_name =your full username example xyz@gmail.com',
+     :password ='password'
+    }</code></pre>
+</div>
+
+
+<p>Remember these are the basic settings needed to send mails from gmail ,other server may have different settings .</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model</p>
+
+<div>
+  <pre><code class='ruby'>def send_email(user)
+     recipients user.emailÏ
+     from &quot;webmaster@example.com&quot;
+     subject &quot;Thank you for Registering&quot;
+     part :content_type =&quot;text/html&quot;,
+     :body =render_message(&quot;registration_confirmation&quot;, :user =user)
+    end</code></pre>
+</div>
+
+
+<p>The from field can be your own or your domains email address. Please check if the from for field has invalid email the user will not be able to reply .</p>
+
+<h3>Creating Email Template</h3>
+
+<p>Now we will create a view which would form a the email template .It is named as same as the method in the model user_mailer ie. Send_email.html.erb</p>
+
+<div>
+  <pre><code class='ruby'>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;gt;
+    h3 { color: #f00; }
+    ul { list-style: none; }
+    Your account signup details are below
+    Name:  
+    Login: 
+    Image: 
+    Content:</code></pre>
+</div>
+
+
+<p>In the end add a line to the create method of the Users_controller</p>
+
+<div>
+  <pre><code class='ruby'>UserMailer.deliver_send_email(@user)</code></pre>
+</div>
+
+
+<p>The method is referred to as deliver_send_email because rails appends it to a mailer method.</p>
+
+<p>Now run the server and try creating a new user. The email is sent to the address the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+</feed>

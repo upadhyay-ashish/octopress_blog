@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rmagic | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/rmagic/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installing RMagick with Imagemagic on Windows 7/Vista]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7/"/>
+    <updated>2012-08-09T14:00:18+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7</id>
+    <content type="html"><![CDATA[<p>Working with Windows 7 64bit and Ruby 1.9.3.</p>
+
+<ul>
+<li><p>Install Ghostscript</p>
+
+<pre><code>  &lt;code&gt;http://downloads.sourceforge.net/project/ghostscript/GPL%20Ghostscript/9.05/gs905w32.exe&lt;/code&gt;
+</code></pre></li>
+<li><p>Install Imagemagick<br/>
+Use the 32 bit version, 64bit is not working.<br/>
+<a href="http://www.imagemagick.org/download/binaries/ImageMagick-6.7.6-1-Q16-windows-dll.exe">Imagemagick</a></p>
+
+<pre><code>  Install dev headers (Check!)
+  Install into C:\opt\
+</code></pre></li>
+<li><p>Restart the console/cmd prompt/IDE/.. or just restart windows to make Imagemagick commands available</p></li>
+<li><p>Install rmagick</p></li>
+</ul>
+
+
+<blockquote><pre><code></code>
+    gem install rmagick --platform=ruby -- --with-opt-lib=C:/opt/ImageMagick-6.7.6-Q16/lib 
+    --with-opt-include=c:/opt/ImageMagick-6.7.6-Q16/include
+</pre></blockquote>
+
+]]></content>
+  </entry>
+  
+</feed>

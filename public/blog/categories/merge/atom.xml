@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: merge | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/merge/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Replacing master with a branch GIT]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2013/02/25/Replacing-master-with-a-branch-GIT/"/>
+    <updated>2013-02-25T17:19:27+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2013/02/25/Replacing-master-with-a-branch-GIT</id>
+    <content type="html"><![CDATA[<h3>This will help us to overwrite the master branch with a new branch incase the new branch is in a better state than the master</h3>
+
+<pre><code>    git checkout seotweaks
+    git merge -s ours master
+    git checkout master
+    git merge seotweaks  
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

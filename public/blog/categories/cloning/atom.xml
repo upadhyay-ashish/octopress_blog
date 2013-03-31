@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cloning | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/cloning/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cloning a specific GIT branch from a repository]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/10/22/Cloning-a-specific-GIT-branch-from-a-repository/"/>
+    <updated>2012-10-22T13:45:13+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/10/22/Cloning-a-specific-GIT-branch-from-a-repository</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Clone the master branch</p>
+
+<pre><code>  git clone &lt;repo master&gt;
+</code></pre></li>
+<li><p>Clone the specific GIT branch</p>
+
+<pre><code>  git fetch origin +branchname:branchname
+</code></pre></li>
+<li><p>Switch to the branch</p>
+
+<pre><code>  git checkout branchname
+</code></pre></li>
+<li><p>Check the file difference between the master and the branch</p>
+
+<pre><code>  git diff --name-status master..sibos
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

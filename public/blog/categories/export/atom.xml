@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: export | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/export/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+</feed>

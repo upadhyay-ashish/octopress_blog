@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: html | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/html/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Creating a native iOS application !]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application/"/>
+    <updated>2012-06-13T19:47:34+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application</id>
+    <content type="html"><![CDATA[<h3>Installing XCode on the system</h3>
+
+<ul>
+<li>Download and install <code>XCode</code> from the App Center alongwith the <code>Developer Tools</code></li>
+</ul>
+
+
+<h3>Download the Phonegap SDK</h3>
+
+<ul>
+<li>Download and unzip the Phonegap SDK.</li>
+<li>Now navigate to the <code>iOS directory</code> in the extracted source and run the <code>Cordova-1.7.0.dmg</code> and install it.</li>
+</ul>
+
+
+<h3>Creating a XCode Project</h3>
+
+<p>Run <code>XCode</code> and create a new Project</p>
+
+<p>Select the template</p>
+
+<ul>
+<li><code>Cordova-based Application</code></li>
+</ul>
+
+
+<p>This will create the a new project and include the neccesary Phonegap API Files.</p>
+
+<h3>Changing the default compiler</h3>
+
+<ul>
+<li>Click on the application name and select <code>BUILD SETTINGS</code> tab in the center pane</li>
+<li>Change the compiler in the <code>BUILD OPTIONS</code> from <code>APPLE LLVM COMPILER</code> to <code>LLVM GCC</code></li>
+</ul>
+
+
+<h3>Build and Run the Project</h3>
+
+<ul>
+<li>Click on the left top of the XCode window selecting the default device as iPad/iPhone Now run the Project. This would invoke the simulator and run the application on it.</li>
+<li>Once the application runs a error will Popup stating the <code>index.html</code> is not found. Close the simulator and return back to the XCode project window.</li>
+</ul>
+
+
+<h3>Include <code>www</code> folder in the project to start with application development</h3>
+
+<ul>
+<li>Right click the project name and select <code>Show in Finder</code></li>
+<li>Drag the <code>www</code> folder from the <code>Finder</code> to the <code>Project</code></li>
+<li>A window pop's up , select to create references to the files.</li>
+</ul>
+
+
+<h3>Again <code>BUILD &amp;amp; RUN</code></h3>
+
+<ul>
+<li>Now again build and run the project in an iPad/iPhone simulatore</li>
+<li>This time it would show up the <code>index.html</code> which is located in the <code>www</code> folder. Also it would show up the <code>Dialog</code> stating that Phonegap was successfully integrated in the application</li>
+</ul>
+
+
+<h3>Download JQuery Mobile bundle</h3>
+
+<p>Download the latest build of JQuery Mobile from  Unzip the contents and add the files in the <code>www</code> folder categorizing the folders as</p>
+
+<ul>
+<li><code>javascripts</code></li>
+<li><code>stylesheets</code></li>
+<li>`images'</li>
+</ul>
+
+
+<h3>Including the JQuery mobile in the application</h3>
+
+<ul>
+<li>Open <code>index.html</code> and create references to the javascript and css files located in the <code>www</code> folder using the html tags</li>
+</ul>
+
+
+<h4>Add a few lines of HTML to the index page and use the JQuery classes and the Phonegap api function calls to implement the features of the native application as desired</h4>
+
+<h3>* not tested though</h3>
+
+<ul>
+<li>Once the application is complete or for on Device testing a <code>Apple's Developer License</code> is required to sign the applications.</li>
+<li>After signing it , push the application to <code>PhoneGap Build</code> .</li>
+<li>Download the build package and deploy to th Device.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
+    <updated>2011-11-11T01:45:45+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
+    <content type="html"><![CDATA[<h2>For rails 3</h2>
+
+<p>Action Mailer allows you to send email from your application using a mailer
+model and views.</p>
+
+<p>This tutorial is about how to send an email using gmail free service in Ruby on Rails 3 and above</div></p>
+
+<h3>Creating Demo project</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a User model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a Mailer model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Setting up the development.rb for configuring application settings to</h3>
+
+<p>access mail smtp server</p>
+
+<h4>In development.rb</h4>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto =&amp;amp;gt; true,
+ :address =&amp;amp;gt; 'smtp.gmail.com',
+ :port =&amp;amp;gt; 587,
+ :domain =&amp;amp;gt; 'your.domain.com',
+ :authentication =&amp;amp;gt; :login,
+ :content_type =&amp;amp;gt; &quot;text/html&quot;,
+ :user_name =&amp;amp;gt; 'username',
+ :password =&amp;amp;gt; 'password'
+}
+
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+Remember these are the basic settings needed to send mails from gmail ,other server may
+have different settings.</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_email(user)
+   recipients  user.email
+   from        &quot;webmaster@example.com&quot;
+   subject     &quot;Thank you for Registering&quot;
+   part :content_type =&amp;gt; &quot;text/html&quot;,
+    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating Email Template</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
+h3 { color: #f00; }
+ul { list-style: none; }
+Your account signup details are below
+Name:  
+Login: 
+Image: 
+Content: 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
+run the server and try creating a new user . The email is sent to the address
+the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer 2.3.9]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
+    <updated>2011-11-11T01:35:14+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
+    <content type="html"><![CDATA[<h1>Easy email delivery and testing</h1>
+
+<p>Action Mailer allows you to send email from your application using a mailer model and views.<br/>
+This tutorial is about how to send an email using gmail free service in Ruby on Rails 2.3.9, for versions higher than this refer rails guides .</p>
+
+<h3>Creating Demo project</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails mail_demo –d mysql        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a User model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby script/generate scaffold User name:string email:string content:string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a Mailer model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby script/generate mailer user_mailer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Setting up the development.rb for configuring application settings to access mail smtp server</h3>
+
+<h4>In development.rb</h4>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto =true,
+ :address ='smtp.gmail.com',
+ :port =587,
+ :domain ='your.domain.com',
+ :authentication =:login,
+ :content_type =&quot;text/html&quot;,
+ :user_name =your full username example xyz@gmail.com',
+ :password ='password'
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Remember these are the basic settings needed to send mails from gmail ,other server may have different settings .</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_email(user)
+ recipients user.emailÏ
+ from &quot;webmaster@example.com&quot;
+ subject &quot;Thank you for Registering&quot;
+ part :content_type =&quot;text/html&quot;,
+ :body =render_message(&quot;registration_confirmation&quot;, :user =user)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+The from field can be your own or your domains email address. Please check if the from for field has invalid email the user will not be able to reply .</p>
+
+<h3>Creating Email Template</h3>
+
+<p>Now we will create a view which would form a the email template .It is named as same as the method in the model user_mailer ie. Send_email.html.erb</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
+h3 { color: #f00; }
+ul { list-style: none; }
+Your account signup details are below
+Name:  
+Login: 
+Image: 
+Content: 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+In the end add a line to the create method of the Users_controller</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;UserMailer.deliver_send_email(@user)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>The method is referred to as deliver_send_email because rails appends it to a mailer method.</p>
+
+<p>Now run the server and try creating a new user. The email is sent to the address the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+</feed>

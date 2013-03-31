@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jdbc | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/jdbc/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Oracle JDBC with JRuby on Mac OSx]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx/"/>
+    <updated>2013-01-08T21:02:14+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx</id>
+    <content type="html"><![CDATA[<h3>Please follow the below steps to create a jruby library to connect to any oracle database on Mac OS x using Java ODBC drivers.</h3>
+
+<ul>
+<li>Create the Library folder and the Ruby file. eg <code>Sample.rb</code></li>
+<li>Add Gemfile to enable using jruby to connect to the database</li>
+<li><p>Add the following gems to the Gemfile</p>
+
+<pre><code>gem 'activerecord'
+gem "activerecord-jdbc-adapter"
+</code></pre></li>
+<li><p>In the ruby file Sample.rb here please use the following lines and then write appropriate  code to access the data.</p>
+
+<pre><code>class Person &lt; ActiveRecord::Base
+    establish_connection(
+      :adapter  =&gt; 'jdbc',
+      :driver   =&gt; 'oracle.jdbc.driver.OracleDriver',
+      :url      =&gt; 'jdbc:oracle:thin:@server:port/sid',
+      :username =&gt; 'ors',
+      :password =&gt; 'ors'
+      )
+      self.table_name = :table_name_here
+        def self.all
+          connection.select_all &lt;&lt;-SQL
+                  select * from table_name_here
+             SQL
+        end
+ end
+</code></pre></li>
+<li><p>Go to terminal ,run</p>
+
+<pre><code>bundle install 
+jruby Sample.rb
+</code></pre></li>
+<li><p>If there is a driver not found error please download the driver from oracle site here
+and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Oracle JDBC with JRuby on Mac OSx]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx/"/>
+    <updated>2013-01-08T21:02:14+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx</id>
+    <content type="html"><![CDATA[<h3>Please follow the below steps to create a jruby library to connect to any oracle database on Mac OS x using Java ODBC drivers.</h3>
+
+<ul>
+<li>Create the Library folder and the Ruby file. eg <code>Sample.rb</code></li>
+<li>Add Gemfile to enable using jruby to connect to the database</li>
+<li><p>Add the following gems to the Gemfile</p>
+
+<pre><code>gem 'activerecord'
+gem "activerecord-jdbc-adapter"
+</code></pre></li>
+<li><p>In the ruby file Sample.rb here please use the following lines and then write appropriate  code to access the data.</p>
+
+<pre><code>class Person &lt; ActiveRecord::Base
+    establish_connection(
+      :adapter  =&gt; 'jdbc',
+      :driver   =&gt; 'oracle.jdbc.driver.OracleDriver',
+      :url      =&gt; 'jdbc:oracle:thin:@server:port/sid',
+      :username =&gt; 'ors',
+      :password =&gt; 'ors'
+      )
+      self.table_name = :table_name_here
+        def self.all
+          connection.select_all &lt;&lt;-SQL
+                  select * from table_name_here
+             SQL
+        end
+ end
+</code></pre></li>
+<li><p>Go to terminal ,run</p>
+
+<pre><code>bundle install 
+jruby Sample.rb
+</code></pre></li>
+<li><p>If there is a driver not found error please download the driver from oracle site here
+and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

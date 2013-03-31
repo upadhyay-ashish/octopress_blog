@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: send | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/send/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer 2.3.9]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
+    <updated>2011-11-11T01:35:14+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
+    <content type="html"><![CDATA[<h1>Easy email delivery and testing</h1>
+
+<p>Action Mailer allows you to send email from your application using a mailer model and views.<br/>
+This tutorial is about how to send an email using gmail free service in Ruby on Rails 2.3.9, for versions higher than this refer rails guides .</p>
+
+<h3>Creating Demo project</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails mail_demo –d mysql        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a User model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby script/generate scaffold User name:string email:string content:string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a Mailer model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby script/generate mailer user_mailer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Setting up the development.rb for configuring application settings to access mail smtp server</h3>
+
+<h4>In development.rb</h4>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto =true,
+ :address ='smtp.gmail.com',
+ :port =587,
+ :domain ='your.domain.com',
+ :authentication =:login,
+ :content_type =&quot;text/html&quot;,
+ :user_name =your full username example xyz@gmail.com',
+ :password ='password'
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Remember these are the basic settings needed to send mails from gmail ,other server may have different settings .</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_email(user)
+ recipients user.emailÏ
+ from &quot;webmaster@example.com&quot;
+ subject &quot;Thank you for Registering&quot;
+ part :content_type =&quot;text/html&quot;,
+ :body =render_message(&quot;registration_confirmation&quot;, :user =user)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+The from field can be your own or your domains email address. Please check if the from for field has invalid email the user will not be able to reply .</p>
+
+<h3>Creating Email Template</h3>
+
+<p>Now we will create a view which would form a the email template .It is named as same as the method in the model user_mailer ie. Send_email.html.erb</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
+h3 { color: #f00; }
+ul { list-style: none; }
+Your account signup details are below
+Name:  
+Login: 
+Image: 
+Content: 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+In the end add a line to the create method of the Users_controller</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;UserMailer.deliver_send_email(@user)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>The method is referred to as deliver_send_email because rails appends it to a mailer method.</p>
+
+<p>Now run the server and try creating a new user. The email is sent to the address the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+</feed>

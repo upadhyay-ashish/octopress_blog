@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: error | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/error/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Readline error Ubuntu]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/08/11/Fix-Readline-error-Ubuntu/"/>
+    <updated>2012-08-11T00:48:12+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/08/11/Fix-Readline-error-Ubuntu</id>
+    <content type="html"><![CDATA[<pre><code>    sudo apt-get install libreadline-dev
+
+    cd ~/.rvm/src/ruby-1.8.7-p249/ext/readline
+
+    ruby extconf.rb &amp;&amp; make &amp;&amp; make install
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

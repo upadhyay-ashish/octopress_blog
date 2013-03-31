@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: to | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/to/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <updated>2012-09-28T00:33:52+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Install <code>git-svn</code> on ubuntu or linux</p>
+
+<pre><code>  git-svn clone &lt;svn repo link&gt;  my_project  
+</code></pre></li>
+<li><p>You need to do a bit of post-import cleanup. For one thing, you should clean up the weird references that git svn set up. First you’ll move the tags so they’re actual tags rather than strange remote branches, and then you’ll move the rest of the branches so they’re local.<br/>
+To move the tags to be proper Git tags, run</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/tags/* .git/refs/tags/  
+  rm -Rf .git/refs/remotes/tags  
+</code></pre></li>
+<li><p>This takes the references that were remote branches that started with tag/ and makes them real (lightweight) tags.
+Next, move the rest of the references under refs/remotes to be local branches:</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/* .git/refs/heads/  
+  rm -Rf .git/refs/remotes  
+</code></pre></li>
+<li><p>Now all the old branches are real Git branches and all the old tags are real Git tags. The last thing to do is add your new Git server as a remote and push to it. Here is an example of adding your server as a remote:</p>
+
+<pre><code>  git remote add origin git@my-git-server:myrepository.git  
+</code></pre></li>
+<li><p>Because you want all your branches and tags to go up, you can now run this</p>
+
+<pre><code>  git push origin --all  
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <updated>2012-09-28T00:33:52+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Install <code>git-svn</code> on ubuntu or linux</p>
+
+<pre><code>  git-svn clone &lt;svn repo link&gt;  my_project  
+</code></pre></li>
+<li><p>You need to do a bit of post-import cleanup. For one thing, you should clean up the weird references that git svn set up. First you’ll move the tags so they’re actual tags rather than strange remote branches, and then you’ll move the rest of the branches so they’re local.<br/>
+To move the tags to be proper Git tags, run</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/tags/* .git/refs/tags/  
+  rm -Rf .git/refs/remotes/tags  
+</code></pre></li>
+<li><p>This takes the references that were remote branches that started with tag/ and makes them real (lightweight) tags.
+Next, move the rest of the references under refs/remotes to be local branches:</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/* .git/refs/heads/  
+  rm -Rf .git/refs/remotes  
+</code></pre></li>
+<li><p>Now all the old branches are real Git branches and all the old tags are real Git tags. The last thing to do is add your new Git server as a remote and push to it. Here is an example of adding your server as a remote:</p>
+
+<pre><code>  git remote add origin git@my-git-server:myrepository.git  
+</code></pre></li>
+<li><p>Because you want all your branches and tags to go up, you can now run this</p>
+
+<pre><code>  git push origin --all  
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <updated>2012-09-28T00:33:52+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>Install <code>git-svn</code> on ubuntu or linux</p>
+
+<pre><code>  git-svn clone &lt;svn repo link&gt;  my_project  
+</code></pre></li>
+<li><p>You need to do a bit of post-import cleanup. For one thing, you should clean up the weird references that git svn set up. First you’ll move the tags so they’re actual tags rather than strange remote branches, and then you’ll move the rest of the branches so they’re local.<br/>
+To move the tags to be proper Git tags, run</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/tags/* .git/refs/tags/  
+  rm -Rf .git/refs/remotes/tags  
+</code></pre></li>
+<li><p>This takes the references that were remote branches that started with tag/ and makes them real (lightweight) tags.
+Next, move the rest of the references under refs/remotes to be local branches:</p>
+
+<pre><code>  cp -Rf .git/refs/remotes/* .git/refs/heads/  
+  rm -Rf .git/refs/remotes  
+</code></pre></li>
+<li><p>Now all the old branches are real Git branches and all the old tags are real Git tags. The last thing to do is add your new Git server as a remote and push to it. Here is an example of adding your server as a remote:</p>
+
+<pre><code>  git remote add origin git@my-git-server:myrepository.git  
+</code></pre></li>
+<li><p>Because you want all your branches and tags to go up, you can now run this</p>
+
+<pre><code>  git push origin --all  
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

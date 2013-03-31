@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: in | Möbius Idea's]]></title>
+  <link href="http://ashish-upadhyay.com/blog/categories/in/atom.xml" rel="self"/>
+  <link href="http://ashish-upadhyay.com/"/>
+  <updated>2013-03-31T06:13:56+05:30</updated>
+  <id>http://ashish-upadhyay.com/</id>
+  <author>
+    <name><![CDATA[Ashish Upadhyay]]></name>
+    <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Export to Excel in Rails 3 without a Gem]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem/"/>
+    <updated>2011-11-30T02:32:54+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
+    <content type="html"><![CDATA[<ul>
+<li>Creating Demo project
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li>Creating a User model
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a MIME type in \config\initializers\mime_type.rb
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ Add a xls format output to the method in the Controller
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def index
+  @users = User.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xls
+    format.xml  { render :xml =&amp;gt; @users }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &amp;lt;% @users.each do |user| %&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
+  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  &amp;lt;% end %&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;</code></pre>
+</div>
+
++ The text in the <th> tags are the headers and <td> tags are the data for the specified columns
++ Adding the link to export excel on the Index page
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
++ This will allow the data on index page to be exported in Excel Format</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
+    <updated>2011-11-11T01:45:45+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
+    <content type="html"><![CDATA[<h2>For rails 3</h2>
+
+<p>Action Mailer allows you to send email from your application using a mailer
+model and views.</p>
+
+<p>This tutorial is about how to send an email using gmail free service in Ruby on Rails 3 and above</div></p>
+
+<h3>Creating Demo project</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a User model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a Mailer model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Setting up the development.rb for configuring application settings to</h3>
+
+<p>access mail smtp server</p>
+
+<h4>In development.rb</h4>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto =&amp;amp;gt; true,
+ :address =&amp;amp;gt; 'smtp.gmail.com',
+ :port =&amp;amp;gt; 587,
+ :domain =&amp;amp;gt; 'your.domain.com',
+ :authentication =&amp;amp;gt; :login,
+ :content_type =&amp;amp;gt; &quot;text/html&quot;,
+ :user_name =&amp;amp;gt; 'username',
+ :password =&amp;amp;gt; 'password'
+}
+
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+Remember these are the basic settings needed to send mails from gmail ,other server may
+have different settings.</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_email(user)
+   recipients  user.email
+   from        &quot;webmaster@example.com&quot;
+   subject     &quot;Thank you for Registering&quot;
+   part :content_type =&amp;gt; &quot;text/html&quot;,
+    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating Email Template</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
+h3 { color: #f00; }
+ul { list-style: none; }
+Your account signup details are below
+Name:  
+Login: 
+Image: 
+Content: 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
+run the server and try creating a new user . The email is sent to the address
+the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
+    <updated>2011-11-11T01:45:45+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
+    <content type="html"><![CDATA[<h2>For rails 3</h2>
+
+<p>Action Mailer allows you to send email from your application using a mailer
+model and views.</p>
+
+<p>This tutorial is about how to send an email using gmail free service in Ruby on Rails 3 and above</div></p>
+
+<h3>Creating Demo project</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a User model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a Mailer model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Setting up the development.rb for configuring application settings to</h3>
+
+<p>access mail smtp server</p>
+
+<h4>In development.rb</h4>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto =&amp;amp;gt; true,
+ :address =&amp;amp;gt; 'smtp.gmail.com',
+ :port =&amp;amp;gt; 587,
+ :domain =&amp;amp;gt; 'your.domain.com',
+ :authentication =&amp;amp;gt; :login,
+ :content_type =&amp;amp;gt; &quot;text/html&quot;,
+ :user_name =&amp;amp;gt; 'username',
+ :password =&amp;amp;gt; 'password'
+}
+
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+Remember these are the basic settings needed to send mails from gmail ,other server may
+have different settings.</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_email(user)
+   recipients  user.email
+   from        &quot;webmaster@example.com&quot;
+   subject     &quot;Thank you for Registering&quot;
+   part :content_type =&amp;gt; &quot;text/html&quot;,
+    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating Email Template</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
+h3 { color: #f00; }
+ul { list-style: none; }
+Your account signup details are below
+Name:  
+Login: 
+Image: 
+Content: 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
+run the server and try creating a new user . The email is sent to the address
+the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Action Mailer]]></title>
+    <link href="http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
+    <updated>2011-11-11T01:45:45+05:30</updated>
+    <id>http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
+    <content type="html"><![CDATA[<h2>For rails 3</h2>
+
+<p>Action Mailer allows you to send email from your application using a mailer
+model and views.</p>
+
+<p>This tutorial is about how to send an email using gmail free service in Ruby on Rails 3 and above</div></p>
+
+<h3>Creating Demo project</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a User model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating a Mailer model</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Setting up the development.rb for configuring application settings to</h3>
+
+<p>access mail smtp server</p>
+
+<h4>In development.rb</h4>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto =&amp;amp;gt; true,
+ :address =&amp;amp;gt; 'smtp.gmail.com',
+ :port =&amp;amp;gt; 587,
+ :domain =&amp;amp;gt; 'your.domain.com',
+ :authentication =&amp;amp;gt; :login,
+ :content_type =&amp;amp;gt; &quot;text/html&quot;,
+ :user_name =&amp;amp;gt; 'username',
+ :password =&amp;amp;gt; 'password'
+}
+
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+Remember these are the basic settings needed to send mails from gmail ,other server may
+have different settings.</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def send_email(user)
+   recipients  user.email
+   from        &quot;webmaster@example.com&quot;
+   subject     &quot;Thank you for Registering&quot;
+   part :content_type =&amp;gt; &quot;text/html&quot;,
+    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<h3>Creating Email Template</h3>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
+h3 { color: #f00; }
+ul { list-style: none; }
+Your account signup details are below
+Name:  
+Login: 
+Image: 
+Content: 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
+run the server and try creating a new user . The email is sent to the address
+the user enters for the new record.</p>
+]]></content>
+  </entry>
+  
+</feed>
