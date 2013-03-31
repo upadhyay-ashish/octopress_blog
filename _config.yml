@@ -61,16 +61,16 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 # 
 # 
-facebook_user: bilLaaBadMash
+facebook_user: "bilLaaBadMash"
 
 # Github repositories
-github_user: upadhyay-ashish
+github_user: "upadhyay-ashish"
 github_repo_count: 2
 github_show_profile_link: true
 github_skip_forks: false
 
 # Twitter
-twitter_user: _zapper32
+twitter_user: "_zapper320"
 twitter_tweet_button: true
 
 # Google +1
@@ -79,12 +79,14 @@ google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user:
-googleplus_hidden: true
+googleplus_user: "111369575548975907349"
+googleplus_hidden: false
 
+# Blogger
+blogger: "http://rorashish.blogspot.com"
 
 # Disqus Comments
-disqus_short_name: zapper320
+disqus_short_name: "myblogdev"
 disqus_show_comment_count: true
 
 # Google Analytics
@@ -92,3 +94,9 @@ google_analytics_tracking_id: 'UA-39566611-1'
 
 # Facebook Like
 facebook_like: true
+
+# Instagram
+instagram_user_badge: "zapper320"
+
+# Gravatar
+gravatar_url: https://secure.gravatar.com/avatar/a9bdddc86fb5585eaf2ebbb8e262735e?s=420
