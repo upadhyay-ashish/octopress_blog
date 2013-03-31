@@ -5,8 +5,8 @@ rvm:
 script: bundle exec rake generate
 after_success:
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  - git remote add staging git@heroku.com:blog-ashish.git
-  - yes | git push staging master
+  - heroku plugins:install https://github.com/ddollar/heroku-anvil
+  - heroku build -r blog-ashish -b https://github.com/heroku/heroku-buildpack-ruby.git
 env:
   global:
   - secure: ! 'nRSi06zyuXOtwFVMQPu/uFSVLpp4wGvxtrFEGWPaSCGQWEor1XpmKjSgt7SmuFWQRaHhcYJXvZaGUcfojffVrFFW6gYziR+RwamHRK/j3wo3t74oCclladkW73mcOcYRCpmczoFs8Bn693jgL/5nhIKHhP+P9nGb3HchQcNFpvM='
