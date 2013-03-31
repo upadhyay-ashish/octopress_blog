@@ -2,15 +2,10 @@
 language: ruby
 rvm:
 - 1.9.3
-- 1.9.2
 script: bundle exec rake generate
 after_success:
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   - git remote add staging git@heroku.com:blog-ashish.git
-  - echo "Host heroku.com" >> ~/.ssh/config
-  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-  - echo "   CheckHostIP no" >> ~/.ssh/config
-  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
   - yes | git push staging master
 env:
   global:
