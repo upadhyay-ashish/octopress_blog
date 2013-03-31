@@ -3,7 +3,7 @@ layout: post
 title: Installing RMagick with Imagemagic on Windows 7/Vista
 date: 2012-08-09 08:30:18 UTC
 updated: 2012-08-09 08:30:18 UTC
-comments: false
+comments: true
 categories: rails rmagic imagemagick rmagick
 ---
 

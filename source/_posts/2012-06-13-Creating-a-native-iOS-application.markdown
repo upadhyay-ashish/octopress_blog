@@ -3,7 +3,7 @@ layout: post
 title: Creating a native iOS application !
 date: 2012-06-13 14:17:34 UTC
 updated: 2012-06-13 14:17:34 UTC
-comments: false
+comments: true
 categories: ios app html5 native ios app Phonegap apple application natiive ios app ios html phonegap app ios native application
 ---
 

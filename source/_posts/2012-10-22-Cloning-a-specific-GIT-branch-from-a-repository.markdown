@@ -3,7 +3,7 @@ layout: post
 title: Cloning a specific GIT branch from a repository
 date: 2012-10-22 08:15:13 UTC
 updated: 2012-10-22 08:15:13 UTC
-comments: false
+comments: true
 categories: git clone git git clone branch clone git branch cloning a branch git
 ---
 

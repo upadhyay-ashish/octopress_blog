@@ -3,7 +3,7 @@ layout: post
 title: Using Oracle JDBC with JRuby on Mac OSx
 date: 2013-01-08 15:32:14 UTC
 updated: 2013-01-08 15:32:14 UTC
-comments: false
+comments: true
 categories: jdbc ruby jdbc mac
 ---
 

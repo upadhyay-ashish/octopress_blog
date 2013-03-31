@@ -3,7 +3,7 @@ layout: post
 title: Export to Excel in Rails 3 without a Gem
 date: 2011-11-29 21:02:54 UTC
 updated: 2011-11-29 21:02:54 UTC
-comments: false
+comments: true
 categories: excel export rails xls export rails excel export rails 3 excel export ror xls export in ror xls export rails 3 xls export in ruby excel export ruby
 ---
 

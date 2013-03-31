@@ -3,7 +3,7 @@ layout: post
 title: Action Mailer
 date: 2011-11-10 20:15:45 UTC
 updated: 2011-11-10 20:15:45 UTC
-comments: false
+comments: true
 categories: gmail email in ruby emails email rails html email in ror actionmailer email in ruby
 ---
 

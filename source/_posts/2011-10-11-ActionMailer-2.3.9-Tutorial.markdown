@@ -3,7 +3,7 @@ layout: post
 title: Action Mailer 2.3.9
 date: 2011-11-10 20:05:14 UTC
 updated: 2011-11-10 20:05:14 UTC
-comments: false
+comments: true
 categories: ruby send email ruby email rails email gmail email in ruby emails email rails ruby gmail actionmailer html email in ror actionmailer email in ruby actionmailer 2.3.9
 ---
 

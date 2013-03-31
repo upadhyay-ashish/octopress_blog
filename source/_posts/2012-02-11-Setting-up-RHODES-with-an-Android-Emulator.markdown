@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Setting up Rhomobile with an Android Emulator 
+comments: true
 category: posts
 ---
 

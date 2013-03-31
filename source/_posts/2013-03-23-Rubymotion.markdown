@@ -2,6 +2,7 @@
 layout: post
 title: Using Rubymotion for iOS application development
 category: posts
+comments: true
 ---
 ## TCS RSS Feed Reader  123
 

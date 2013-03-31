@@ -3,7 +3,7 @@ layout: post
 title: Migrating code from SVN to GIT
 date: 2012-09-27 19:03:52 UTC
 updated: 2012-09-27 19:03:52 UTC
-comments: false
+comments: true
 categories: migrating repositories svn git repo migration push to git from svn svn git migration move svn to git svn to git git svn clone git repo from svn migrate svn repo
 ---
 

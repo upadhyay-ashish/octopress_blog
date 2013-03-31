@@ -3,7 +3,7 @@ layout: post
 title: Replacing master with a branch GIT
 date: 2013-02-25 11:49:27 UTC
 updated: 2013-02-25 11:49:27 UTC
-comments: false
+comments: true
 categories: merge master rename a branch git. git branch
 ---
 

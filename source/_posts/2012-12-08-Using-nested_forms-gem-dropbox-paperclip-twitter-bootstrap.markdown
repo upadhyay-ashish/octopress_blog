@@ -3,7 +3,7 @@ layout: post
 title: Using nested_forms gem + dropbox-paperclip + twitter-bootstrap
 date: 2012-12-08 08:25:52 UTC
 updated: 2012-12-08 08:25:52 UTC
-comments: false
+comments: true
 categories: photo-upload multi-model-forms dropbox-rails rails-nested-forms bootstrap rails-paperclip paperclip-dropbox paperclip file-storage-rails accepts_nested_attributes_for nested_form nested-forms
 ---
 

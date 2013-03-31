@@ -2,6 +2,7 @@
 layout: post
 title: Capistrano 
 category: posts
+comments: true
 ---
 
 ## Too many arguments while deployment
