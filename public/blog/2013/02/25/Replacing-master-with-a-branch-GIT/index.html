@@ -132,7 +132,14 @@ posted in
   </header>
 
 
-  <div class="entry-content"></div>
+  <div class="entry-content"><h3>This will help us to overwrite the master branch with a new branch incase the new branch is in a better state than the master</h3>
+
+<pre><code>    git checkout seotweaks
+    git merge -s ours master
+    git checkout master
+    git merge seotweaks  
+</code></pre>
+</div>
 
 
   <footer>
@@ -220,7 +227,7 @@ posted in
         </li>
       
         <li>
-          <a href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
         </li>
       
         <li>

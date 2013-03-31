@@ -134,7 +134,94 @@ posted in
   </header>
 
 
-  <div class="entry-content"></div>
+  <div class="entry-content"><h2>For rails 3</h2>
+
+<p>Action Mailer allows you to send email from your application using a mailer
+model and views.</p>
+
+<p>This tutorial is about how to send an email using gmail free service in Ruby on Rails 3 and above</div></p>
+
+<h3>Creating Demo project</h3>
+
+<div>
+  <pre><code class='ruby'>rails new mail_demo –d mysql</code></pre>
+</div>
+
+
+<h3>Creating a User model</h3>
+
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string</code></pre>
+</div>
+
+
+<h3>Creating a Mailer model</h3>
+
+<div>
+  <pre><code class='ruby'>rails g mailer user_mailer</code></pre>
+</div>
+
+
+<h3>Setting up the development.rb for configuring application settings to</h3>
+
+<p>access mail smtp server</p>
+
+<h4>In development.rb</h4>
+
+<div>
+  <pre><code class='ruby'>config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+     :enable_starttls_auto =&amp;gt; true,
+     :address =&amp;gt; 'smtp.gmail.com',
+     :port =&amp;gt; 587,
+     :domain =&amp;gt; 'your.domain.com',
+     :authentication =&amp;gt; :login,
+     :content_type =&amp;gt; &quot;text/html&quot;,
+     :user_name =&amp;gt; 'username',
+     :password =&amp;gt; 'password'
+    }
+
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true</code></pre>
+</div>
+
+
+<p>Remember these are the basic settings needed to send mails from gmail ,other server may
+have different settings.</p>
+
+<h3>Creating the mailer</h3>
+
+<p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :</p>
+
+<div>
+  <pre><code class='ruby'>def send_email(user)
+       recipients  user.email
+       from        &quot;webmaster@example.com&quot;
+       subject     &quot;Thank you for Registering&quot;
+       part :content_type =&gt; &quot;text/html&quot;,
+        :body =&gt; render_message(&quot;registration_confirmation&quot;, :user =&gt; user)
+    end</code></pre>
+</div>
+
+
+<h3>Creating Email Template</h3>
+
+<div>
+  <pre><code class='ruby'>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;gt;
+    h3 { color: #f00; }
+    ul { list-style: none; }
+    Your account signup details are below
+    Name:  
+    Login: 
+    Image: 
+    Content:</code></pre>
+</div>
+
+
+<p>The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
+run the server and try creating a new user . The email is sent to the address
+the user enters for the new record.</p>
+</div>
 
 
   <footer>
@@ -222,7 +309,7 @@ posted in
         </li>
       
         <li>
-          <a href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
         </li>
       
         <li>

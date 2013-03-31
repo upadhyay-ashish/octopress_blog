@@ -132,7 +132,31 @@ posted in
   </header>
 
 
-  <div class="entry-content"></div>
+  <div class="entry-content"><p>Working with Windows 7 64bit and Ruby 1.9.3.</p>
+
+<ul>
+<li><p>Install Ghostscript</p>
+
+<pre><code>  &lt;code&gt;http://downloads.sourceforge.net/project/ghostscript/GPL%20Ghostscript/9.05/gs905w32.exe&lt;/code&gt;
+</code></pre></li>
+<li><p>Install Imagemagick<br/>
+Use the 32 bit version, 64bit is not working.<br/>
+<a href="http://www.imagemagick.org/download/binaries/ImageMagick-6.7.6-1-Q16-windows-dll.exe">Imagemagick</a></p>
+
+<pre><code>  Install dev headers (Check!)
+  Install into C:\opt\
+</code></pre></li>
+<li><p>Restart the console/cmd prompt/IDE/.. or just restart windows to make Imagemagick commands available</p></li>
+<li><p>Install rmagick</p></li>
+</ul>
+
+
+<blockquote><pre><code></code>
+    gem install rmagick &#8211;platform=ruby &#8211; &#8211;with-opt-lib=C:/opt/ImageMagick-6.7.6-Q16/lib 
+    &#8211;with-opt-include=c:/opt/ImageMagick-6.7.6-Q16/include
+</pre></blockquote>
+
+</div>
 
 
   <footer>
@@ -190,7 +214,7 @@ posted in
       <a class="pull-left" href="/blog/2012/06/13/Creating-a-native-iOS-application/" title="Previous Post: Creating a native iOS application !">&laquo; Creating a native iOS application !</a>
     
     
-      <a class="pull-right" href="/blog/2012/08/10/Capistrano-%2B-GIT-%3A-Too-many-arguments-while-deployment/" title="Next Post: Capistrano">Capistrano &raquo;</a>
+      <a class="pull-right" href="/blog/2012/08/10/Capistrano-GIT-Too-many-arguments-while-deployment/" title="Next Post: Capistrano">Capistrano &raquo;</a>
     
   </footer>
 
@@ -220,7 +244,7 @@ posted in
         </li>
       
         <li>
-          <a href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
         </li>
       
         <li>

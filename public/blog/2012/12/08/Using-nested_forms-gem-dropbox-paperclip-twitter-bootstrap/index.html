@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">
+  <link rel="canonical" href="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">
   <link href="/favicon.png" rel="icon">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -30,8 +30,8 @@
   <meta name="og:site_name" content="Möbius Idea's" />
   <meta name="og:title" content="Using nested_forms gem + dropbox-paperclip + twitter-bootstrap" />
   <meta name="og:description" content="This is a tutorial about using nested_forms gem with dropbox-paperclip plugin on Heroku to create a multiple photo upload albums interface with &hellip;" />
-  <meta name="og:url" content="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/"/>
-  <meta name="url" content="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">
+  <meta name="og:url" content="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/"/>
+  <meta name="url" content="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">
   
   <meta name="subject" content="accepts_nested_attributes_forbootstrapdropbox-railsfile-storage-railsmulti-model-formsnested-formsnested_formpaperclippaperclip-dropboxphoto-uploadrails-nested-formsrails-paperclip"/>
   <meta name="category" content="accepts_nested_attributes_forbootstrapdropbox-railsfile-storage-railsmulti-model-formsnested-formsnested_formpaperclippaperclip-dropboxphoto-uploadrails-nested-formsrails-paperclip"/>
@@ -132,7 +132,279 @@ posted in
   </header>
 
 
-  <div class="entry-content"></div>
+  <div class="entry-content"><h4>This is a tutorial about using nested_forms gem with dropbox-paperclip plugin on Heroku to create a multiple photo upload albums interface with twitter bootstrap</h4>
+
+<p><a href="http://ashish-albums.herokuapp.com">Demo application</a></p>
+
+<ul>
+<li>Create a new rails app and add the gems to Gemfile.**</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>paperclip
+        paperclip-dropbox
+        nested_form</code></pre>
+</div>
+
+
+<ul>
+<li><p>Create 3 models**<br/>
+ <div>
+<pre><code class='ruby'>rails g model User name:string</p>
+
+<pre><code>  rails g model Album name:string user_id:integer
+  rails g model Photo tags_name:string album_id:integer&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+<p></div></p></li>
+<li><p>Adding relationships among models</p>
+
+<h4>in app/models/user.rb</h4></li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>has_many :albums, :dependent =:destroy  
+        accepts_nested_attributes_for :albums  
+        attr_accessible :name, :albums_attributes  
+        validates_presence_of :name    
+        belongs_to :user   
+        has_many :photos, :dependent =:destroy  
+        accepts_nested_attributes_for :photos, :allow_destroy =true  
+        attr_accessible :name, :photos_attributes  
+        validates_presence_of :name   
+        belongs_to :album  
+        attr_accessible :avatar, :tags_name  
+        has_attached_file :avatar,  
+        :storage =:dropbox,  
+        :dropbox_credentials =&quot;#{Rails.root}/config/dropbox.yml&quot;,  
+        :styles ={ :thumb =&quot;100x100&quot; },  
+        :dropbox_options ={  
+        :path =proc { |style| &quot;#{style}/#{id}_#{avatar.original_filename}&quot;}  
+        }  
+        validates_presence_of :avatar</code></pre>
+</div>
+
+
+<ul>
+<li>Adding a controller and a few actions**</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails g controller Users 
+        add following code to the controller 
+        def index  
+         @users = User.all  
+        end  
+          
+        def new  
+         @user = User.new  
+        end  
+          
+        def create  
+         @user = User.new(params[:user])  
+         if @user.save  
+          redirect_to root_url  
+          else  
+           redirect_to root_url  
+         end  
+        end  
+          
+        def show_albums  
+         @albums = Album.find(params[:id])  
+        end  
+          
+        def destroy  
+         @user = User.find(params[:id])  
+         @user.destroy  
+         redirect_to root_url  
+        end</code></pre>
+</div>
+
+
+<ul>
+<li>Adding routes to routes.rb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>resources :users do  
+         member do  
+         get 'show_albums'  
+         end  
+        end  
+        root :to ='users#index'</code></pre>
+</div>
+
+
+<ul>
+<li>Creating views for forms and data show</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>index.html.erb
+        new.html.erb
+        show_albums.html.erb
+        _album_fields.html.erb
+        _photo_fields.html.erb</code></pre>
+</div>
+
+
+<ul>
+<li>Adding form html to views**
+
+<h4>in index.html.erb :**</h4></li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;%= link_to 'New User', new_user_path , :class =&gt; 'btn btn-medium btn-primary pull-right'%&gt;
+        &lt;table class=&quot;table table-striped&quot;&gt;
+        &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Album Names&lt;/th&gt;
+        &lt;!--th&gt;Tags&lt;/th--&gt;
+        &lt;th&gt;Destroy&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;% @users.each do |user| %&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;%= user.name %&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;% (user_albums_link user).each do |album_link| %&gt;
+            &lt;%= album_link.html_safe %&gt;
+          &lt;% end %&gt;
+         &lt;% thumbnails = show_photo_thumbnails(user.albums) if user.albums %&gt;
+         &lt;% if thumbnails %&gt;
+            &lt;% thumbnails.each do |thumb| %&gt;
+              &lt;%= thumb.html_safe  %&gt;
+            &lt;% end %&gt;
+         &lt;% end %&gt;
+        &lt;/td&gt;
+        &lt;!--td&gt;
+          &lt;%#= tags user.albums %&gt;
+        &lt;/td--&gt;
+        &lt;td&gt;
+            &lt;%= link_to t('.destroy', :default =&gt; t(&quot;helpers.links.destroy&quot;)),
+              user_path(user),
+              :method =&gt; :delete,
+              :data =&gt; { :confirm =&gt; t('.confirm', 
+              :default =&gt; t(&quot;helpers.links.confirm&quot;, :default =&gt; 'Are you sure?')) },
+              :class =&gt; 'btn btn-mini btn-danger' %&gt;
+        &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;% end %&gt;
+        &lt;/table&gt;
+        &lt;br /&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in new.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;%= nested_form_for @user, :html =&gt; { :multipart =&gt; true } do |f| %&gt;
+        &lt;div class=&quot;controls&quot;&gt;
+          Username :
+          &lt;%= f.text_field :name, :class =&gt; 'text_field' %&gt;
+        &lt;/div&gt;
+        &lt;%= f.fields_for :albums %&gt;
+        &lt;%= f.link_to_add &quot;Add an album&quot;, :albums %&gt;
+        &lt;br /&gt;
+        &lt;br /&gt;
+        &lt;div class=&quot;controls&quot;&gt;
+          &lt;%= f.submit nil, :class =&gt; 'btn btn-primary' %&gt;
+        &lt;/div&gt;
+        &lt;% end %&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in _album_fields.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;div class=&quot;controls&quot;&gt;
+          Album Name :
+          &lt;%= f.text_field :name, :class =&gt; 'text_field' %&gt;
+          &lt;%= f.link_to_remove &quot;Remove this album&quot; %&gt;
+          &lt;%= f.fields_for :photos %&gt;
+            &lt;p&gt;
+            &lt;%= f.link_to_add &quot;Add a photo&quot;, :photos %&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in _photo_fields.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;div class=&quot;controls offset1&quot;&gt;
+          File :
+          &lt;%= f.text_field :tags_name %&gt;
+          &lt;%= f.file_field :avatar %&gt;
+          &lt;%= f.link_to_remove &quot;Remove this photo&quot; %&gt;
+        &lt;/div&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>in show_albums.html.erb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;% thumbnails = get_photos(@albums) if @albums %&gt;
+         &lt;% if thumbnails %&gt;
+            &lt;% thumbnails.each do |thumb| %&gt;
+              &lt;%= thumb.html_safe  %&gt;
+            &lt;% end %&gt;
+         &lt;% end %&gt;
+         &lt;%= show_tags @albums %&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>Add dropbox.yml in config folder with following data :**</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>app_key:    
+        app_secret:    
+        access_token:    
+        access_token_secret:    
+        user_id:</code></pre>
+</div>
+
+
+<ul>
+<li><p>These variables are Environment variables in environments files.</p></li>
+<li><p>For detailed setup for paperclip-dropbox gem <a href="https://github.com/janko-m/paperclip-dropbox">paperclip-dropbox</a></p></li>
+<li>Setup Twitter Bootstrap **</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails generate bootstrap:install less  
+        rails g bootstrap:layout application fixed**Step 10 : Run the application :**  
+        bundle  
+        rake db:create  
+        rake db:migrate  
+        rails s</code></pre>
+</div>
+
+
+
+</div>
 
 
   <footer>
@@ -175,7 +447,7 @@ posted in
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/" data-via="_zapper320" data-counturl="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/" data-via="_zapper320" data-counturl="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -220,7 +492,7 @@ posted in
         </li>
       
         <li>
-          <a href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
         </li>
       
         <li>

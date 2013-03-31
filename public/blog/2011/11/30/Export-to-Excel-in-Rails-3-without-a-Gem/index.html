@@ -132,7 +132,105 @@ posted in
   </header>
 
 
-  <div class="entry-content"></div>
+  <div class="entry-content"><ul>
+<li>Creating Demo project</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails new xcel_demo –d mysql</code></pre>
+</div>
+
+
+<ul>
+<li>Creating a User model</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string</code></pre>
+</div>
+
+
+<ul>
+<li>Add a MIME type in \config\initializers\mime_type.rb</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>Mime::Type.register 'application/vnd.ms-excel', :xls</code></pre>
+</div>
+
+
+<ul>
+<li>Add a xls format output to the method in the Controller</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>def index
+      @users = User.all
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xls
+        format.xml  { render :xml =&gt; @users }
+      end
+    end</code></pre>
+</div>
+
+
+<ul>
+<li><p>Creating the view for the XLS</p></li>
+<li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users</p></li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;
+
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;City&lt;/th&gt;
+        &lt;th&gt;Gender&lt;/th&gt;
+        &lt;th&gt;Phone&lt;/th&gt;
+        &lt;th&gt;Address&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+
+    &lt;% @users.each do |user| %&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;%= user.name %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.city %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.gender %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.phone %&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;%= user.address %&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;% end %&gt;
+    &lt;/table&gt;
+
+    &lt;br /&gt;</code></pre>
+</div>
+
+
+<ul>
+<li>The text in the <th> tags are the headers and <td> tags are the data for the specified columns</li>
+<li>Adding the link to export excel on the Index page</li>
+</ul>
+
+
+<div>
+  <pre><code class='ruby'>`&lt;%= link_to 'Export XLS', url_for(:format =&gt; 'xls') %&gt;`</code></pre>
+</div>
+
+
+<ul>
+<li>This will allow the data on index page to be exported in Excel Format</li>
+</ul>
+
+</div>
 
 
   <footer>
@@ -220,7 +318,7 @@ posted in
         </li>
       
         <li>
-          <a href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
         </li>
       
         <li>

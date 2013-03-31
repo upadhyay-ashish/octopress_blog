@@ -4,7 +4,7 @@
   <title><![CDATA[Möbius Idea's]]></title>
   <link href="http://www.ashish-upadhyay.com/atom.xml" rel="self"/>
   <link href="http://www.ashish-upadhyay.com/"/>
-  <updated>2013-03-31T07:37:14+05:30</updated>
+  <updated>2013-03-31T08:51:23+05:30</updated>
   <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
@@ -125,9 +125,9 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
   
   <entry>
     <title type="html"><![CDATA[Using nested_forms gem + dropbox-paperclip + twitter-bootstrap]]></title>
-    <link href="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/"/>
     <updated>2012-12-08T13:55:52+05:30</updated>
-    <id>http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-+-dropbox-paperclip-+-twitter-bootstrap</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap</id>
     <content type="html"><![CDATA[<h4>This is a tutorial about using nested_forms gem with dropbox-paperclip plugin on Heroku to create a multiple photo upload albums interface with twitter bootstrap</h4>
 
 <p><a href="http://ashish-albums.herokuapp.com">Demo application</a></p>
@@ -481,9 +481,9 @@ Next, move the rest of the references under refs/remotes to be local branches:</
   
   <entry>
     <title type="html"><![CDATA[Capistrano]]></title>
-    <link href="http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-%2B-GIT-%3A-Too-many-arguments-while-deployment/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-GIT-Too-many-arguments-while-deployment/"/>
     <updated>2012-08-10T00:00:00+05:30</updated>
-    <id>http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-+-GIT-:-Too-many-arguments-while-deployment</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-GIT-Too-many-arguments-while-deployment</id>
     <content type="html"><![CDATA[<h2>Too many arguments while deployment</h2>
 
 <p><strong>Issue : shell command failed with return code 33024</strong></p>

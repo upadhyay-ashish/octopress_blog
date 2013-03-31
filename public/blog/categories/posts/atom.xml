@@ -4,7 +4,7 @@
   <title><![CDATA[Category: posts | Möbius Idea's]]></title>
   <link href="http://www.ashish-upadhyay.com/blog/categories/posts/atom.xml" rel="self"/>
   <link href="http://www.ashish-upadhyay.com/"/>
-  <updated>2013-03-31T07:37:14+05:30</updated>
+  <updated>2013-03-31T08:51:23+05:30</updated>
   <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
@@ -65,9 +65,9 @@
   
   <entry>
     <title type="html"><![CDATA[Capistrano]]></title>
-    <link href="http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-%2B-GIT-%3A-Too-many-arguments-while-deployment/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-GIT-Too-many-arguments-while-deployment/"/>
     <updated>2012-08-10T00:00:00+05:30</updated>
-    <id>http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-+-GIT-:-Too-many-arguments-while-deployment</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-GIT-Too-many-arguments-while-deployment</id>
     <content type="html"><![CDATA[<h2>Too many arguments while deployment</h2>
 
 <p><strong>Issue : shell command failed with return code 33024</strong></p>

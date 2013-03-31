@@ -132,7 +132,44 @@ posted in
   </header>
 
 
-  <div class="entry-content"></div>
+  <div class="entry-content"><h3>Please follow the below steps to create a jruby library to connect to any oracle database on Mac OS x using Java ODBC drivers.</h3>
+
+<ul>
+<li>Create the Library folder and the Ruby file. eg <code>Sample.rb</code></li>
+<li>Add Gemfile to enable using jruby to connect to the database</li>
+<li><p>Add the following gems to the Gemfile</p>
+
+<pre><code>gem 'activerecord'
+gem "activerecord-jdbc-adapter"
+</code></pre></li>
+<li><p>In the ruby file Sample.rb here please use the following lines and then write appropriate  code to access the data.</p>
+
+<pre><code>class Person &lt; ActiveRecord::Base
+    establish_connection(
+      :adapter  =&gt; 'jdbc',
+      :driver   =&gt; 'oracle.jdbc.driver.OracleDriver',
+      :url      =&gt; 'jdbc:oracle:thin:@server:port/sid',
+      :username =&gt; 'ors',
+      :password =&gt; 'ors'
+      )
+      self.table_name = :table_name_here
+        def self.all
+          connection.select_all &lt;&lt;-SQL
+                  select * from table_name_here
+             SQL
+        end
+ end
+</code></pre></li>
+<li><p>Go to terminal ,run</p>
+
+<pre><code>bundle install 
+jruby Sample.rb
+</code></pre></li>
+<li><p>If there is a driver not found error please download the driver from oracle site here
+and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
+</ul>
+
+</div>
 
 
   <footer>
@@ -187,7 +224,7 @@ posted in
 
     
     
-      <a class="pull-left" href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/" title="Previous Post: Using nested_forms gem + dropbox-paperclip + twitter-bootstrap">&laquo; Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+      <a class="pull-left" href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/" title="Previous Post: Using nested_forms gem + dropbox-paperclip + twitter-bootstrap">&laquo; Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
     
     
       <a class="pull-right" href="/blog/2013/02/25/Replacing-master-with-a-branch-GIT/" title="Next Post: Replacing master with a branch GIT">Replacing master with a branch GIT &raquo;</a>
@@ -220,7 +257,7 @@ posted in
         </li>
       
         <li>
-          <a href="/blog/2012/12/08/Using-nested_forms-gem-%2B-dropbox-paperclip-%2B-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
         </li>
       
         <li>
