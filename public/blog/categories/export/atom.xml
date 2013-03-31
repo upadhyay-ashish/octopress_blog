@@ -4,7 +4,7 @@
   <title><![CDATA[Category: export | Möbius Idea's]]></title>
   <link href="http://www.ashish-upadhyay.com/blog/categories/export/atom.xml" rel="self"/>
   <link href="http://www.ashish-upadhyay.com/"/>
-  <updated>2013-03-31T08:51:23+05:30</updated>
+  <updated>2013-03-31T08:57:56+05:30</updated>
   <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
@@ -20,105 +20,93 @@
     <id>http://www.ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
     <content type="html"><![CDATA[<ul>
 <li>Creating Demo project
-<div>
-  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="kp">new</span> <span class="n">xcel_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li>Creating a User model
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a MIME type in \config\initializers\mime_type.rb
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;Mime::Type.register &#39;application/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ms</span><span class="o">-</span><span class="n">excel</span><span class="err">&#39;</span><span class="p">,</span> <span class="ss">:xls</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a xls format output to the method in the Controller
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;    def index
-  @users = User.all
-  respond_to do |format|
-    format.html # index.html.erb
-    format.xls
-    format.xml  { render :xml =&amp;gt; @users }
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;    def index</span>
+<span class="sr">  @users = User.all</span>
+<span class="sr">  respond_to do |format|</span>
+<span class="sr">    format.html # index.html.erb</span>
+<span class="sr">    format.xls</span>
+<span class="sr">    format.xml  { render :xml =&amp;gt; @users }</span>
+<span class="sr">  end</span>
+<span class="sr">end</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li><p>Creating the view for the XLS</p></li>
 <li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
-<div>
-  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Listing</span> <span class="n">users</span><span class="o">&lt;</span><span class="sr">/h1&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;</span>
+<span class="sr">  &amp;lt;th&amp;gt;Name&amp;lt;/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">City</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Gender</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Phone</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Address</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-  &amp;lt;% @users.each do |user| %&gt;
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="vi">@users</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="sx">%&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sx">&lt;pre&gt;</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.name %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">city</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">phone</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%=</span> <span class="n">user</span><span class="o">.</span><span class="n">address</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &amp;lt;% end %&gt;
-  &lt;/table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">end</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;/table&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<span class="sr">&lt;p&gt;  &lt;br /</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + The text in the <th> tags are the headers and <td> tags are the data for the specified columns
 + Adding the link to export excel on the Index page
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to &#39;Export XLS&#39;, url_for(:format =&amp;gt; &#39;xls&#39;) %&amp;gt;`</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + This will allow the data on index page to be exported in Excel Format</p>
 ]]></content>
   </entry>
@@ -130,105 +118,93 @@ end
     <id>http://www.ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
     <content type="html"><![CDATA[<ul>
 <li>Creating Demo project
-<div>
-  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="kp">new</span> <span class="n">xcel_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li>Creating a User model
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a MIME type in \config\initializers\mime_type.rb
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;Mime::Type.register &#39;application/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ms</span><span class="o">-</span><span class="n">excel</span><span class="err">&#39;</span><span class="p">,</span> <span class="ss">:xls</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a xls format output to the method in the Controller
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;    def index
-  @users = User.all
-  respond_to do |format|
-    format.html # index.html.erb
-    format.xls
-    format.xml  { render :xml =&amp;gt; @users }
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;    def index</span>
+<span class="sr">  @users = User.all</span>
+<span class="sr">  respond_to do |format|</span>
+<span class="sr">    format.html # index.html.erb</span>
+<span class="sr">    format.xls</span>
+<span class="sr">    format.xml  { render :xml =&amp;gt; @users }</span>
+<span class="sr">  end</span>
+<span class="sr">end</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li><p>Creating the view for the XLS</p></li>
 <li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
-<div>
-  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Listing</span> <span class="n">users</span><span class="o">&lt;</span><span class="sr">/h1&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;</span>
+<span class="sr">  &amp;lt;th&amp;gt;Name&amp;lt;/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">City</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Gender</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Phone</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Address</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-  &amp;lt;% @users.each do |user| %&gt;
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="vi">@users</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="sx">%&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sx">&lt;pre&gt;</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.name %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">city</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">phone</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%=</span> <span class="n">user</span><span class="o">.</span><span class="n">address</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &amp;lt;% end %&gt;
-  &lt;/table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">end</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;/table&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<span class="sr">&lt;p&gt;  &lt;br /</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + The text in the <th> tags are the headers and <td> tags are the data for the specified columns
 + Adding the link to export excel on the Index page
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to &#39;Export XLS&#39;, url_for(:format =&amp;gt; &#39;xls&#39;) %&amp;gt;`</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + This will allow the data on index page to be exported in Excel Format</p>
 ]]></content>
   </entry>
@@ -240,105 +216,93 @@ end
     <id>http://www.ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
     <content type="html"><![CDATA[<ul>
 <li>Creating Demo project
-<div>
-  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="kp">new</span> <span class="n">xcel_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li>Creating a User model
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a MIME type in \config\initializers\mime_type.rb
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;Mime::Type.register &#39;application/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ms</span><span class="o">-</span><span class="n">excel</span><span class="err">&#39;</span><span class="p">,</span> <span class="ss">:xls</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a xls format output to the method in the Controller
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;    def index
-  @users = User.all
-  respond_to do |format|
-    format.html # index.html.erb
-    format.xls
-    format.xml  { render :xml =&amp;gt; @users }
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;    def index</span>
+<span class="sr">  @users = User.all</span>
+<span class="sr">  respond_to do |format|</span>
+<span class="sr">    format.html # index.html.erb</span>
+<span class="sr">    format.xls</span>
+<span class="sr">    format.xml  { render :xml =&amp;gt; @users }</span>
+<span class="sr">  end</span>
+<span class="sr">end</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li><p>Creating the view for the XLS</p></li>
 <li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
-<div>
-  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Listing</span> <span class="n">users</span><span class="o">&lt;</span><span class="sr">/h1&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;</span>
+<span class="sr">  &amp;lt;th&amp;gt;Name&amp;lt;/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">City</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Gender</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Phone</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Address</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-  &amp;lt;% @users.each do |user| %&gt;
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="vi">@users</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="sx">%&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sx">&lt;pre&gt;</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.name %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">city</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">phone</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%=</span> <span class="n">user</span><span class="o">.</span><span class="n">address</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &amp;lt;% end %&gt;
-  &lt;/table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">end</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;/table&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<span class="sr">&lt;p&gt;  &lt;br /</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + The text in the <th> tags are the headers and <td> tags are the data for the specified columns
 + Adding the link to export excel on the Index page
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to &#39;Export XLS&#39;, url_for(:format =&amp;gt; &#39;xls&#39;) %&amp;gt;`</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + This will allow the data on index page to be exported in Excel Format</p>
 ]]></content>
   </entry>
@@ -350,105 +314,93 @@ end
     <id>http://www.ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
     <content type="html"><![CDATA[<ul>
 <li>Creating Demo project
-<div>
-  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="kp">new</span> <span class="n">xcel_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li>Creating a User model
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a MIME type in \config\initializers\mime_type.rb
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;Mime::Type.register &#39;application/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ms</span><span class="o">-</span><span class="n">excel</span><span class="err">&#39;</span><span class="p">,</span> <span class="ss">:xls</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a xls format output to the method in the Controller
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;    def index
-  @users = User.all
-  respond_to do |format|
-    format.html # index.html.erb
-    format.xls
-    format.xml  { render :xml =&amp;gt; @users }
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;    def index</span>
+<span class="sr">  @users = User.all</span>
+<span class="sr">  respond_to do |format|</span>
+<span class="sr">    format.html # index.html.erb</span>
+<span class="sr">    format.xls</span>
+<span class="sr">    format.xml  { render :xml =&amp;gt; @users }</span>
+<span class="sr">  end</span>
+<span class="sr">end</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li><p>Creating the view for the XLS</p></li>
 <li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
-<div>
-  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Listing</span> <span class="n">users</span><span class="o">&lt;</span><span class="sr">/h1&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;</span>
+<span class="sr">  &amp;lt;th&amp;gt;Name&amp;lt;/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">City</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Gender</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Phone</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Address</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-  &amp;lt;% @users.each do |user| %&gt;
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="vi">@users</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="sx">%&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sx">&lt;pre&gt;</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.name %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">city</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">phone</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%=</span> <span class="n">user</span><span class="o">.</span><span class="n">address</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &amp;lt;% end %&gt;
-  &lt;/table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">end</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;/table&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<span class="sr">&lt;p&gt;  &lt;br /</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + The text in the <th> tags are the headers and <td> tags are the data for the specified columns
 + Adding the link to export excel on the Index page
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to &#39;Export XLS&#39;, url_for(:format =&amp;gt; &#39;xls&#39;) %&amp;gt;`</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + This will allow the data on index page to be exported in Excel Format</p>
 ]]></content>
   </entry>
@@ -460,105 +412,93 @@ end
     <id>http://www.ashish-upadhyay.com/blog/2011/11/30/Export-to-Excel-in-Rails-3-without-a-Gem</id>
     <content type="html"><![CDATA[<ul>
 <li>Creating Demo project
-<div>
-  <pre><code class='ruby'>rails new xcel_demo –d mysql&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="kp">new</span> <span class="n">xcel_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li>Creating a User model
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string&lt;/li&gt;
-&lt;/ul&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a MIME type in \config\initializers\mime_type.rb
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;Mime::Type.register 'application/vnd.ms-excel', :xls
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;Mime::Type.register &#39;application/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ms</span><span class="o">-</span><span class="n">excel</span><span class="err">&#39;</span><span class="p">,</span> <span class="ss">:xls</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div>
 + Add a xls format output to the method in the Controller
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;    def index
-  @users = User.all
-  respond_to do |format|
-    format.html # index.html.erb
-    format.xls
-    format.xml  { render :xml =&amp;gt; @users }
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;    def index</span>
+<span class="sr">  @users = User.all</span>
+<span class="sr">  respond_to do |format|</span>
+<span class="sr">    format.html # index.html.erb</span>
+<span class="sr">    format.xls</span>
+<span class="sr">    format.xml  { render :xml =&amp;gt; @users }</span>
+<span class="sr">  end</span>
+<span class="sr">end</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <ul>
 <li><p>Creating the view for the XLS</p></li>
 <li><p>Now create a view to render the xls file. Here as we have modified the index method we will create a view index.xls.erb for the same in the views for Users
-<div>
-  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby">  <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Listing</span> <span class="n">users</span><span class="o">&lt;</span><span class="sr">/h1&gt;&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &lt;table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;th&amp;gt;Name&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;City&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Gender&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Phone&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;Address&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-  &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;</span>
+<span class="sr">  &amp;lt;th&amp;gt;Name&amp;lt;/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">City</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Gender</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Phone</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Address</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">th</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-  &amp;lt;% @users.each do |user| %&gt;
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="vi">@users</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="sx">%&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;tr&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.name %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.city %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.phone %&amp;gt;&amp;lt;/td&amp;gt;
-  &amp;lt;td&amp;gt;&amp;lt;%= user.address %&amp;gt;&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sx">&lt;pre&gt;</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.name %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">city</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="sx">%= user.gender %&amp;gt;&amp;lt;/td&amp;gt;</span>
+<span class="sx">  &amp;lt;td&amp;gt;&amp;lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">phone</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%=</span> <span class="n">user</span><span class="o">.</span><span class="n">address</span> <span class="sx">%&amp;gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">td</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">tr</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;  &amp;lt;% end %&gt;
-  &lt;/table&gt;&lt;/p&gt;
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">end</span> <span class="sx">%&gt;</span>
+<span class="sx">  &lt;/table&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;p&gt;  &lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<span class="sr">&lt;p&gt;  &lt;br /</span><span class="o">&gt;&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span>
 
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + The text in the <th> tags are the headers and <td> tags are the data for the specified columns
 + Adding the link to export excel on the Index page
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to 'Export XLS', url_for(:format =&amp;gt; 'xls') %&amp;gt;`
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;`&amp;lt;%= link_to &#39;Export XLS&#39;, url_for(:format =&amp;gt; &#39;xls&#39;) %&amp;gt;`</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div>
 + This will allow the data on index page to be exported in Excel Format</p>
 ]]></content>
   </entry>

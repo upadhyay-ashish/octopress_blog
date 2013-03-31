@@ -4,7 +4,7 @@
   <title><![CDATA[Möbius Idea's]]></title>
   <link href="http://www.ashish-upadhyay.com/atom.xml" rel="self"/>
   <link href="http://www.ashish-upadhyay.com/"/>
-  <updated>2013-03-31T08:51:23+05:30</updated>
+  <updated>2013-03-31T08:57:56+05:30</updated>
   <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
@@ -137,50 +137,52 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>paperclip
-        paperclip-dropbox
-        nested_form</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">        <span class="n">paperclip</span>
+        <span class="n">paperclip</span><span class="o">-</span><span class="n">dropbox</span>
+        <span class="n">nested_form</span>     
+      
+</code></pre></div>
 
 
 <ul>
-<li><p>Create 3 models**<br/>
- <div>
-<pre><code class='ruby'>rails g model User name:string</p>
+<li>Create 3 models**</li>
+</ul>
 
-<pre><code>  rails g model Album name:string user_id:integer
-  rails g model Photo tags_name:string album_id:integer&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
 
-<p></div></p></li>
-<li><p>Adding relationships among models</p>
+<div class="highlight"><pre><code class="ruby">        <span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span>  
+        <span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">Album</span> <span class="nb">name</span><span class="ss">:string</span> <span class="n">user_id</span><span class="ss">:integer</span>
+        <span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">Photo</span> <span class="n">tags_name</span><span class="ss">:string</span> <span class="n">album_id</span><span class="ss">:integer</span>    
+   
+</code></pre></div>
+
+
+<ul>
+<li>Adding relationships among models
 
 <h4>in app/models/user.rb</h4></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>has_many :albums, :dependent =:destroy  
-        accepts_nested_attributes_for :albums  
-        attr_accessible :name, :albums_attributes  
-        validates_presence_of :name    
-        belongs_to :user   
-        has_many :photos, :dependent =:destroy  
-        accepts_nested_attributes_for :photos, :allow_destroy =true  
-        attr_accessible :name, :photos_attributes  
-        validates_presence_of :name   
-        belongs_to :album  
-        attr_accessible :avatar, :tags_name  
-        has_attached_file :avatar,  
-        :storage =:dropbox,  
-        :dropbox_credentials =&quot;#{Rails.root}/config/dropbox.yml&quot;,  
-        :styles ={ :thumb =&quot;100x100&quot; },  
-        :dropbox_options ={  
-        :path =proc { |style| &quot;#{style}/#{id}_#{avatar.original_filename}&quot;}  
-        }  
-        validates_presence_of :avatar</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">        <span class="n">has_many</span> <span class="ss">:albums</span><span class="p">,</span> <span class="ss">:dependent</span> <span class="o">=</span><span class="ss">:destroy</span>  
+        <span class="n">accepts_nested_attributes_for</span> <span class="ss">:albums</span>  
+        <span class="n">attr_accessible</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:albums_attributes</span>  
+        <span class="n">validates_presence_of</span> <span class="ss">:name</span>    
+        <span class="n">belongs_to</span> <span class="ss">:user</span>   
+        <span class="n">has_many</span> <span class="ss">:photos</span><span class="p">,</span> <span class="ss">:dependent</span> <span class="o">=</span><span class="ss">:destroy</span>  
+        <span class="n">accepts_nested_attributes_for</span> <span class="ss">:photos</span><span class="p">,</span> <span class="ss">:allow_destroy</span> <span class="o">=</span><span class="kp">true</span>  
+        <span class="n">attr_accessible</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:photos_attributes</span>  
+        <span class="n">validates_presence_of</span> <span class="ss">:name</span>   
+        <span class="n">belongs_to</span> <span class="ss">:album</span>  
+        <span class="n">attr_accessible</span> <span class="ss">:avatar</span><span class="p">,</span> <span class="ss">:tags_name</span>  
+        <span class="n">has_attached_file</span> <span class="ss">:avatar</span><span class="p">,</span>  
+        <span class="ss">:storage</span> <span class="o">=</span><span class="ss">:dropbox</span><span class="p">,</span>  
+        <span class="ss">:dropbox_credentials</span> <span class="o">=</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/config/dropbox.yml&quot;</span><span class="p">,</span>  
+        <span class="ss">:styles</span> <span class="o">=</span><span class="p">{</span> <span class="ss">:thumb</span> <span class="o">=</span><span class="s2">&quot;100x100&quot;</span> <span class="p">},</span>  
+        <span class="ss">:dropbox_options</span> <span class="o">=</span><span class="p">{</span>  
+        <span class="ss">:path</span> <span class="o">=</span><span class="nb">proc</span> <span class="p">{</span> <span class="o">|</span><span class="n">style</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">style</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">_</span><span class="si">#{</span><span class="n">avatar</span><span class="o">.</span><span class="n">original_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>  
+        <span class="p">}</span>  
+        <span class="n">validates_presence_of</span> <span class="ss">:avatar</span>   
+</code></pre></div>
 
 
 <ul>
@@ -188,36 +190,37 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>rails g controller Users 
-        add following code to the controller 
-        def index  
-         @users = User.all  
-        end  
+<div class="highlight"><pre><code class="ruby">   
+    <span class="n">rails</span> <span class="n">g</span> <span class="n">controller</span> <span class="no">Users</span> 
+        <span class="n">add</span> <span class="n">following</span> <span class="n">code</span> <span class="n">to</span> <span class="n">the</span> <span class="n">controller</span> 
+        <span class="k">def</span> <span class="nf">index</span>  
+         <span class="vi">@users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">all</span>  
+        <span class="k">end</span>  
           
-        def new  
-         @user = User.new  
-        end  
+        <span class="k">def</span> <span class="nf">new</span>  
+         <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>  
+        <span class="k">end</span>  
           
-        def create  
-         @user = User.new(params[:user])  
-         if @user.save  
-          redirect_to root_url  
-          else  
-           redirect_to root_url  
-         end  
-        end  
+        <span class="k">def</span> <span class="nf">create</span>  
+         <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:user</span><span class="o">]</span><span class="p">)</span>  
+         <span class="k">if</span> <span class="vi">@user</span><span class="o">.</span><span class="n">save</span>  
+          <span class="n">redirect_to</span> <span class="n">root_url</span>  
+          <span class="k">else</span>  
+           <span class="n">redirect_to</span> <span class="n">root_url</span>  
+         <span class="k">end</span>  
+        <span class="k">end</span>  
           
-        def show_albums  
-         @albums = Album.find(params[:id])  
-        end  
+        <span class="k">def</span> <span class="nf">show_albums</span>  
+         <span class="vi">@albums</span> <span class="o">=</span> <span class="no">Album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>  
+        <span class="k">end</span>  
           
-        def destroy  
-         @user = User.find(params[:id])  
-         @user.destroy  
-         redirect_to root_url  
-        end</code></pre>
-</div>
+        <span class="k">def</span> <span class="nf">destroy</span>  
+         <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>  
+         <span class="vi">@user</span><span class="o">.</span><span class="n">destroy</span>  
+         <span class="n">redirect_to</span> <span class="n">root_url</span>  
+        <span class="k">end</span> 
+      
+</code></pre></div>
 
 
 <ul>
@@ -225,14 +228,14 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>resources :users do  
-         member do  
-         get 'show_albums'  
-         end  
-        end  
-        root :to ='users#index'</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">   
+        <span class="n">resources</span> <span class="ss">:users</span> <span class="k">do</span>  
+         <span class="n">member</span> <span class="k">do</span>  
+         <span class="n">get</span> <span class="s1">&#39;show_albums&#39;</span>  
+         <span class="k">end</span>  
+        <span class="k">end</span>  
+        <span class="n">root</span> <span class="ss">:to</span> <span class="o">=</span><span class="s1">&#39;users#index&#39;</span>  
+</code></pre></div>
 
 
 <ul>
@@ -240,13 +243,13 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>index.html.erb
-        new.html.erb
-        show_albums.html.erb
-        _album_fields.html.erb
-        _photo_fields.html.erb</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">   
+        <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span>
+        <span class="kp">new</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span>
+        <span class="n">show_albums</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span>
+        <span class="n">_album_fields</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span>
+        <span class="n">_photo_fields</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">erb</span>
+</code></pre></div>
 
 
 <ul>
@@ -256,45 +259,46 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>&lt;%= link_to 'New User', new_user_path , :class =&gt; 'btn btn-medium btn-primary pull-right'%&gt;
-        &lt;table class=&quot;table table-striped&quot;&gt;
-        &lt;tr&gt;
-        &lt;th&gt;Name&lt;/th&gt;
-        &lt;th&gt;Album Names&lt;/th&gt;
-        &lt;!--th&gt;Tags&lt;/th--&gt;
-        &lt;th&gt;Destroy&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;% @users.each do |user| %&gt;
-        &lt;tr&gt;
-        &lt;td&gt;&lt;%= user.name %&gt;&lt;/td&gt;
-        &lt;td&gt;
-          &lt;% (user_albums_link user).each do |album_link| %&gt;
-            &lt;%= album_link.html_safe %&gt;
-          &lt;% end %&gt;
-         &lt;% thumbnails = show_photo_thumbnails(user.albums) if user.albums %&gt;
-         &lt;% if thumbnails %&gt;
-            &lt;% thumbnails.each do |thumb| %&gt;
-              &lt;%= thumb.html_safe  %&gt;
-            &lt;% end %&gt;
-         &lt;% end %&gt;
-        &lt;/td&gt;
-        &lt;!--td&gt;
-          &lt;%#= tags user.albums %&gt;
-        &lt;/td--&gt;
-        &lt;td&gt;
-            &lt;%= link_to t('.destroy', :default =&gt; t(&quot;helpers.links.destroy&quot;)),
-              user_path(user),
-              :method =&gt; :delete,
-              :data =&gt; { :confirm =&gt; t('.confirm', 
-              :default =&gt; t(&quot;helpers.links.confirm&quot;, :default =&gt; 'Are you sure?')) },
-              :class =&gt; 'btn btn-mini btn-danger' %&gt;
-        &lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;% end %&gt;
-        &lt;/table&gt;
-        &lt;br /&gt;</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">   
+        <span class="o">&lt;</span><span class="sx">%= link_to &#39;New User&#39;, new_user_path , :class =</span><span class="o">&gt;</span> <span class="s1">&#39;btn btn-medium btn-primary pull-right&#39;</span><span class="sx">%&gt;</span>
+<span class="sx">        &lt;table class=&quot;table table-striped&quot;&gt;</span>
+        <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="no">Name</span><span class="o">&lt;</span><span class="sr">/th&gt;</span>
+<span class="sr">        &lt;th&gt;Album Names&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;!--</span><span class="n">th</span><span class="o">&gt;</span><span class="no">Tags</span><span class="o">&lt;</span><span class="sr">/th--&gt;</span>
+<span class="sr">        &lt;th&gt;Destroy&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/tr&gt;</span>
+<span class="sr">        &lt;% @users.each do |user| %&gt;</span>
+<span class="sr">        &lt;tr&gt;</span>
+<span class="sr">        &lt;td&gt;&lt;%= user.name %&gt;&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="sx">% (user_albums_link </span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">album_link</span><span class="o">|</span> <span class="sx">%&gt;</span>
+<span class="sx">            &lt;%= album_link.html_safe %&gt;</span>
+          <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">         &lt;% thumbnails = show_photo_thumbnails(user.albums) if user.albums %&gt;</span>
+         <span class="o">&lt;</span><span class="sx">% if </span><span class="n">thumbnails</span> <span class="sx">%&gt;</span>
+<span class="sx">            &lt;% thumbnails.each do |thumb| %&gt;</span>
+              <span class="o">&lt;</span><span class="sx">%= thumb.html_safe  %&gt;</span>
+<span class="sx">            &lt;% end %&gt;</span>
+<span class="sx">         &lt;% end %&gt;</span>
+<span class="sx">        &lt;/td&gt;</span>
+<span class="sx">        &lt;!--td&gt;</span>
+<span class="sx">          &lt;%#=</span> <span class="n">tags</span> <span class="n">user</span><span class="o">.</span><span class="n">albums</span> <span class="sx">%&gt;</span>
+<span class="sx">        &lt;/td--&gt;</span>
+        <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="sx">%= link_to t(&#39;.destroy&#39;, :default =</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">(</span><span class="s2">&quot;helpers.links.destroy&quot;</span><span class="p">)),</span>
+              <span class="n">user_path</span><span class="p">(</span><span class="n">user</span><span class="p">),</span>
+              <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:delete</span><span class="p">,</span>
+              <span class="ss">:data</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:confirm</span> <span class="o">=&gt;</span> <span class="n">t</span><span class="p">(</span><span class="s1">&#39;.confirm&#39;</span><span class="p">,</span> 
+              <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="n">t</span><span class="p">(</span><span class="s2">&quot;helpers.links.confirm&quot;</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="s1">&#39;Are you sure?&#39;</span><span class="p">))</span> <span class="p">},</span>
+              <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">&#39;btn btn-mini btn-danger&#39;</span> <span class="sx">%&gt;</span>
+<span class="sx">        &lt;/td&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/tr&gt;</span>
+<span class="sr">        &lt;% end %&gt;</span>
+<span class="sr">        &lt;/</span><span class="n">table</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">br</span> <span class="sr">/&gt;</span>
+<span class="sr">  </span>
+</code></pre></div>
 
 
 <ul>
@@ -302,21 +306,21 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>&lt;%= nested_form_for @user, :html =&gt; { :multipart =&gt; true } do |f| %&gt;
-        &lt;div class=&quot;controls&quot;&gt;
-          Username :
-          &lt;%= f.text_field :name, :class =&gt; 'text_field' %&gt;
-        &lt;/div&gt;
-        &lt;%= f.fields_for :albums %&gt;
-        &lt;%= f.link_to_add &quot;Add an album&quot;, :albums %&gt;
-        &lt;br /&gt;
-        &lt;br /&gt;
-        &lt;div class=&quot;controls&quot;&gt;
-          &lt;%= f.submit nil, :class =&gt; 'btn btn-primary' %&gt;
-        &lt;/div&gt;
-        &lt;% end %&gt;</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">     
+        <span class="o">&lt;</span><span class="sx">%= nested_form_for @user, :html =</span><span class="o">&gt;</span> <span class="p">{</span> <span class="ss">:multipart</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="p">}</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="sx">%&gt;</span>
+<span class="sx">        &lt;div class=&quot;controls&quot;&gt;</span>
+          <span class="no">Username</span> <span class="p">:</span>
+          <span class="o">&lt;</span><span class="sx">%= f.text_field :name, :class =</span><span class="o">&gt;</span> <span class="s1">&#39;text_field&#39;</span> <span class="sx">%&gt;</span>
+<span class="sx">        &lt;/div&gt;</span>
+        <span class="o">&lt;</span><span class="sx">%= f.fields_for :albums %&gt;</span>
+<span class="sx">        &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">link_to_add</span> <span class="s2">&quot;Add an album&quot;</span><span class="p">,</span> <span class="ss">:albums</span> <span class="sx">%&gt;</span>
+<span class="sx">        &lt;br /&gt;</span>
+        <span class="o">&lt;</span><span class="n">br</span> <span class="sr">/&gt;</span>
+<span class="sr">        &lt;div class=&quot;controls&quot;&gt;</span>
+<span class="sr">          &lt;%= f.submit nil, :class =&gt; &#39;btn btn-primary&#39; %&gt;</span>
+<span class="sr">        &lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</code></pre></div>
 
 
 <ul>
@@ -324,17 +328,17 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>&lt;div class=&quot;controls&quot;&gt;
-          Album Name :
-          &lt;%= f.text_field :name, :class =&gt; 'text_field' %&gt;
-          &lt;%= f.link_to_remove &quot;Remove this album&quot; %&gt;
-          &lt;%= f.fields_for :photos %&gt;
-            &lt;p&gt;
-            &lt;%= f.link_to_add &quot;Add a photo&quot;, :photos %&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">     
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;controls&quot;</span><span class="o">&gt;</span>
+          <span class="no">Album</span> <span class="no">Name</span> <span class="p">:</span>
+          <span class="o">&lt;</span><span class="sx">%= f.text_field :name, :class =</span><span class="o">&gt;</span> <span class="s1">&#39;text_field&#39;</span> <span class="sx">%&gt;</span>
+<span class="sx">          &lt;%= f.link_to_remove &quot;Remove this album&quot; %&gt;</span>
+          <span class="o">&lt;</span><span class="sx">%= f.fields_for :photos %&gt;</span>
+<span class="sx">            &lt;p&gt;</span>
+<span class="sx">            &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">link_to_add</span> <span class="s2">&quot;Add a photo&quot;</span><span class="p">,</span> <span class="ss">:photos</span> <span class="sx">%&gt;</span>
+<span class="sx">            &lt;/p&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/div&gt;</span>
+</code></pre></div>
 
 
 <ul>
@@ -342,14 +346,14 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>&lt;div class=&quot;controls offset1&quot;&gt;
-          File :
-          &lt;%= f.text_field :tags_name %&gt;
-          &lt;%= f.file_field :avatar %&gt;
-          &lt;%= f.link_to_remove &quot;Remove this photo&quot; %&gt;
-        &lt;/div&gt;</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">     
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;controls offset1&quot;</span><span class="o">&gt;</span>
+          <span class="no">File</span> <span class="p">:</span>
+          <span class="o">&lt;</span><span class="sx">%= f.text_field :tags_name %&gt;</span>
+<span class="sx">          &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">file_field</span> <span class="ss">:avatar</span> <span class="sx">%&gt;</span>
+<span class="sx">          &lt;%= f.link_to_remove &quot;Remove this photo&quot; %&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/div&gt;</span>
+</code></pre></div>
 
 
 <ul>
@@ -357,15 +361,15 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>&lt;% thumbnails = get_photos(@albums) if @albums %&gt;
-         &lt;% if thumbnails %&gt;
-            &lt;% thumbnails.each do |thumb| %&gt;
-              &lt;%= thumb.html_safe  %&gt;
-            &lt;% end %&gt;
-         &lt;% end %&gt;
-         &lt;%= show_tags @albums %&gt;</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">        <span class="o">&lt;</span><span class="sx">% thumbnails </span><span class="o">=</span> <span class="n">get_photos</span><span class="p">(</span><span class="vi">@albums</span><span class="p">)</span> <span class="k">if</span> <span class="vi">@albums</span> <span class="sx">%&gt;</span>
+<span class="sx">         &lt;% if thumbnails %&gt;</span>
+            <span class="o">&lt;</span><span class="sx">% thumbnails.each </span><span class="k">do</span> <span class="o">|</span><span class="n">thumb</span><span class="o">|</span> <span class="sx">%&gt;</span>
+<span class="sx">              &lt;%= thumb.html_safe  %&gt;</span>
+            <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">         &lt;% end %&gt;</span>
+         <span class="o">&lt;%=</span> <span class="n">show_tags</span> <span class="vi">@albums</span> <span class="o">%&gt;</span>
+          
+</code></pre></div>
 
 
 <ul>
@@ -373,13 +377,13 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>app_key:    
-        app_secret:    
-        access_token:    
-        access_token_secret:    
-        user_id:</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">        <span class="n">app_key</span><span class="p">:</span>    
+        <span class="n">app_secret</span><span class="p">:</span>    
+        <span class="n">access_token</span><span class="p">:</span>    
+        <span class="n">access_token_secret</span><span class="p">:</span>    
+        <span class="n">user_id</span><span class="p">:</span>
+    
+</code></pre></div>
 
 
 <ul>
@@ -389,14 +393,13 @@ and place it in <code>/Library/Java/Extensions/</code> on your mac.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>rails generate bootstrap:install less  
-        rails g bootstrap:layout application fixed**Step 10 : Run the application :**  
-        bundle  
-        rake db:create  
-        rake db:migrate  
-        rails s</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">        <span class="n">rails</span> <span class="n">generate</span> <span class="ss">bootstrap</span><span class="p">:</span><span class="n">install</span> <span class="n">less</span>  
+        <span class="n">rails</span> <span class="n">g</span> <span class="ss">bootstrap</span><span class="p">:</span><span class="n">layout</span> <span class="n">application</span> <span class="n">fixed</span><span class="o">**</span><span class="no">Step</span> <span class="mi">10</span> <span class="p">:</span> <span class="no">Run</span> <span class="n">the</span> <span class="n">application</span> <span class="ss">:**</span>  
+        <span class="n">bundle</span>  
+        <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">create</span>  
+        <span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>  
+        <span class="n">rails</span> <span class="n">s</span>     
+</code></pre></div>
 
 
 
@@ -735,9 +738,8 @@ Now we can go forward designing the mobile application.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>rails new xcel_demo –d mysql</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby"> <span class="n">rails</span> <span class="kp">new</span> <span class="n">xcel_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span>
+</code></pre></div>
 
 
 <ul>
@@ -745,9 +747,8 @@ Now we can go forward designing the mobile application.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby"> <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span>
+</code></pre></div>
 
 
 <ul>
@@ -755,9 +756,8 @@ Now we can go forward designing the mobile application.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>Mime::Type.register 'application/vnd.ms-excel', :xls</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby"> <span class="ss">Mime</span><span class="p">:</span><span class="ss">:Type</span><span class="o">.</span><span class="n">register</span> <span class="s1">&#39;application/vnd.ms-excel&#39;</span><span class="p">,</span> <span class="ss">:xls</span>
+</code></pre></div>
 
 
 <ul>
@@ -765,16 +765,16 @@ Now we can go forward designing the mobile application.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>def index
-      @users = User.all
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xls
-        format.xml  { render :xml =&gt; @users }
-      end
-    end</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">     <span class="k">def</span> <span class="nf">index</span>
+      <span class="vi">@users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">all</span>
+      <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+        <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+        <span class="nb">format</span><span class="o">.</span><span class="n">xls</span>
+        <span class="nb">format</span><span class="o">.</span><span class="n">xml</span>  <span class="p">{</span> <span class="n">render</span> <span class="ss">:xml</span> <span class="o">=&gt;</span> <span class="vi">@users</span> <span class="p">}</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+        
+</code></pre></div>
 
 
 <ul>
@@ -783,34 +783,33 @@ Now we can go forward designing the mobile application.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>&lt;h1&gt;Listing users&lt;/h1&gt;
+<div class="highlight"><pre><code class="ruby"> <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Listing</span> <span class="n">users</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
 
-    &lt;table&gt;
-      &lt;tr&gt;
-        &lt;th&gt;Name&lt;/th&gt;
-        &lt;th&gt;City&lt;/th&gt;
-        &lt;th&gt;Gender&lt;/th&gt;
-        &lt;th&gt;Phone&lt;/th&gt;
-        &lt;th&gt;Address&lt;/th&gt;
-        &lt;th&gt;&lt;/th&gt;
-        &lt;th&gt;&lt;/th&gt;
-        &lt;th&gt;&lt;/th&gt;
-      &lt;/tr&gt;
+<span class="sr">   &lt;table&gt;</span>
+<span class="sr">     &lt;tr&gt;</span>
+<span class="sr">       &lt;th&gt;Name&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="no">City</span><span class="o">&lt;</span><span class="sr">/th&gt;</span>
+<span class="sr">       &lt;th&gt;Gender&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="no">Phone</span><span class="o">&lt;</span><span class="sr">/th&gt;</span>
+<span class="sr">       &lt;th&gt;Address&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="sr">/th&gt;</span>
+<span class="sr">       &lt;th&gt;&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="sr">/th&gt;</span>
+<span class="sr">     &lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
 
-    &lt;% @users.each do |user| %&gt;
-      &lt;tr&gt;
-        &lt;td&gt;&lt;%= user.name %&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;%= user.city %&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;%= user.gender %&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;%= user.phone %&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;%= user.address %&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;% end %&gt;
-    &lt;/table&gt;
+    <span class="o">&lt;</span><span class="sx">% @users.each </span><span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="sx">%&gt;</span>
+<span class="sx">     &lt;tr&gt;</span>
+        <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="sx">%= user.name %&gt;&lt;/td&gt;</span>
+<span class="sx">       &lt;td&gt;&lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">city</span> <span class="sx">%&gt;&lt;/td&gt;</span>
+        <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="sx">%= user.gender %&gt;&lt;/td&gt;</span>
+<span class="sx">       &lt;td&gt;&lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">phone</span> <span class="sx">%&gt;&lt;/td&gt;</span>
+        <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">address</span> <span class="sx">%&gt;&lt;/td&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/tr&gt;</span>
+<span class="sr">   &lt;% end %&gt;</span>
+<span class="sr">   &lt;/</span><span class="n">table</span><span class="o">&gt;</span>
 
-    &lt;br /&gt;</code></pre>
-</div>
+    <span class="o">&lt;</span><span class="n">br</span> <span class="sr">/&gt;</span>
+</code></pre></div>
 
 
 <ul>
@@ -819,9 +818,8 @@ Now we can go forward designing the mobile application.</p></li>
 </ul>
 
 
-<div>
-  <pre><code class='ruby'>`&lt;%= link_to 'Export XLS', url_for(:format =&gt; 'xls') %&gt;`</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="sb">`&lt;%= link_to &#39;Export XLS&#39;, url_for(:format =&gt; &#39;xls&#39;) %&gt;`</span>
+</code></pre></div>
 
 
 <ul>
@@ -845,23 +843,21 @@ model and views.</p>
 
 <h3>Creating Demo project</h3>
 
-<div>
-  <pre><code class='ruby'>rails new mail_demo –d mysql</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">rails</span> <span class="kp">new</span> <span class="n">mail_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span> 
+        
+</code></pre></div>
 
 
 <h3>Creating a User model</h3>
 
-<div>
-  <pre><code class='ruby'>rails g scaffold User name:string email:string content:string</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">rails</span> <span class="n">g</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span> 
+</code></pre></div>
 
 
 <h3>Creating a Mailer model</h3>
 
-<div>
-  <pre><code class='ruby'>rails g mailer user_mailer</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">rails</span> <span class="n">g</span> <span class="n">mailer</span> <span class="n">user_mailer</span> 
+</code></pre></div>
 
 
 <h3>Setting up the development.rb for configuring application settings to</h3>
@@ -870,22 +866,22 @@ model and views.</p>
 
 <h4>In development.rb</h4>
 
-<div>
-  <pre><code class='ruby'>config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-     :enable_starttls_auto =&amp;gt; true,
-     :address =&amp;gt; 'smtp.gmail.com',
-     :port =&amp;gt; 587,
-     :domain =&amp;gt; 'your.domain.com',
-     :authentication =&amp;gt; :login,
-     :content_type =&amp;gt; &quot;text/html&quot;,
-     :user_name =&amp;gt; 'username',
-     :password =&amp;gt; 'password'
-    }
+<div class="highlight"><pre><code class="ruby">    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="ss">:enable_starttls_auto</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span><span class="p">,</span>
+     <span class="ss">:address</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
+     <span class="ss">:port</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">587</span><span class="p">,</span>
+     <span class="ss">:domain</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;your.domain.com&#39;</span><span class="p">,</span>
+     <span class="ss">:authentication</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="ss">:login</span><span class="p">,</span>
+     <span class="ss">:content_type</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+     <span class="ss">:user_name</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+     <span class="ss">:password</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;password&#39;</span>
+    <span class="p">}</span>
 
-    config.action_mailer.perform_deliveries = true
-    config.action_mailer.raise_delivery_errors = true</code></pre>
-</div>
+    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">perform_deliveries</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">raise_delivery_errors</span> <span class="o">=</span> <span class="kp">true</span>
+        
+</code></pre></div>
 
 
 <p>Remember these are the basic settings needed to send mails from gmail ,other server may
@@ -895,29 +891,29 @@ have different settings.</p>
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :</p>
 
-<div>
-  <pre><code class='ruby'>def send_email(user)
-       recipients  user.email
-       from        &quot;webmaster@example.com&quot;
-       subject     &quot;Thank you for Registering&quot;
-       part :content_type =&gt; &quot;text/html&quot;,
-        :body =&gt; render_message(&quot;registration_confirmation&quot;, :user =&gt; user)
-    end</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+       <span class="n">recipients</span>  <span class="n">user</span><span class="o">.</span><span class="n">email</span>
+       <span class="n">from</span>        <span class="s2">&quot;webmaster@example.com&quot;</span>
+       <span class="n">subject</span>     <span class="s2">&quot;Thank you for Registering&quot;</span>
+       <span class="n">part</span> <span class="ss">:content_type</span> <span class="o">=&gt;</span> <span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+        <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="n">render_message</span><span class="p">(</span><span class="s2">&quot;registration_confirmation&quot;</span><span class="p">,</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">)</span>
+    <span class="k">end</span>
+</code></pre></div>
 
 
 <h3>Creating Email Template</h3>
 
-<div>
-  <pre><code class='ruby'>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;gt;
-    h3 { color: #f00; }
-    ul { list-style: none; }
-    Your account signup details are below
-    Name:  
-    Login: 
-    Image: 
-    Content:</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby"> 
+    <span class="s2">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+    <span class="n">h3</span> <span class="p">{</span> <span class="ss">color</span><span class="p">:</span> <span class="c1">#f00; }</span>
+    <span class="n">ul</span> <span class="p">{</span> <span class="n">list</span><span class="o">-</span><span class="ss">style</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span> <span class="p">}</span>
+    <span class="no">Your</span> <span class="n">account</span> <span class="n">signup</span> <span class="n">details</span> <span class="n">are</span> <span class="n">below</span>
+    <span class="ss">Name</span><span class="p">:</span>  
+    <span class="ss">Login</span><span class="p">:</span> 
+    <span class="ss">Image</span><span class="p">:</span> 
+    <span class="ss">Content</span><span class="p">:</span> 
+        
+</code></pre></div>
 
 
 <p>The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
@@ -938,43 +934,39 @@ This tutorial is about how to send an email using gmail free service in Ruby on 
 
 <h3>Creating Demo project</h3>
 
-<div>
-  <pre><code class='ruby'>rails mail_demo –d mysql</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">rails</span> <span class="n">mail_demo</span> <span class="err">–</span><span class="n">d</span> <span class="n">mysql</span>        
+</code></pre></div>
 
 
 <h3>Creating a User model</h3>
 
-<div>
-  <pre><code class='ruby'>ruby script/generate scaffold User name:string email:string content:string</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">ruby</span> <span class="n">script</span><span class="o">/</span><span class="n">generate</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span>
+</code></pre></div>
 
 
 <h3>Creating a Mailer model</h3>
 
-<div>
-  <pre><code class='ruby'>ruby script/generate mailer user_mailer</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">ruby</span> <span class="n">script</span><span class="o">/</span><span class="n">generate</span> <span class="n">mailer</span> <span class="n">user_mailer</span>
+</code></pre></div>
 
 
 <h3>Setting up the development.rb for configuring application settings to access mail smtp server</h3>
 
 <h4>In development.rb</h4>
 
-<div>
-  <pre><code class='ruby'>config.action_mailer.delivery_method = :smtp
-    config.action_mailer.raise_delivery_errors = true
-    config.action_mailer.smtp_settings = {
-     :enable_starttls_auto =true,
-     :address ='smtp.gmail.com',
-     :port =587,
-     :domain ='your.domain.com',
-     :authentication =:login,
-     :content_type =&quot;text/html&quot;,
-     :user_name =your full username example xyz@gmail.com',
-     :password ='password'
-    }</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">raise_delivery_errors</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="ss">:enable_starttls_auto</span> <span class="o">=</span><span class="kp">true</span><span class="p">,</span>
+     <span class="ss">:address</span> <span class="o">=</span><span class="s1">&#39;smtp.gmail.com&#39;</span><span class="p">,</span>
+     <span class="ss">:port</span> <span class="o">=</span><span class="mi">587</span><span class="p">,</span>
+     <span class="ss">:domain</span> <span class="o">=</span><span class="s1">&#39;your.domain.com&#39;</span><span class="p">,</span>
+     <span class="ss">:authentication</span> <span class="o">=</span><span class="ss">:login</span><span class="p">,</span>
+     <span class="ss">:content_type</span> <span class="o">=</span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+     <span class="ss">:user_name</span> <span class="o">=</span><span class="n">your</span> <span class="n">full</span> <span class="n">username</span> <span class="n">example</span> <span class="n">xyz</span><span class="vi">@gmail</span><span class="o">.</span><span class="n">com</span><span class="s1">&#39;,</span>
+<span class="s1">     :password =&#39;</span><span class="n">password</span><span class="err">&#39;</span>
+    <span class="p">}</span>
+</code></pre></div>
 
 
 <p>Remember these are the basic settings needed to send mails from gmail ,other server may have different settings .</p>
@@ -983,15 +975,14 @@ This tutorial is about how to send an email using gmail free service in Ruby on 
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model</p>
 
-<div>
-  <pre><code class='ruby'>def send_email(user)
-     recipients user.emailÏ
-     from &quot;webmaster@example.com&quot;
-     subject &quot;Thank you for Registering&quot;
-     part :content_type =&quot;text/html&quot;,
-     :body =render_message(&quot;registration_confirmation&quot;, :user =user)
-    end</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+     <span class="n">recipients</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="err">Ï</span>
+     <span class="n">from</span> <span class="s2">&quot;webmaster@example.com&quot;</span>
+     <span class="n">subject</span> <span class="s2">&quot;Thank you for Registering&quot;</span>
+     <span class="n">part</span> <span class="ss">:content_type</span> <span class="o">=</span><span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+     <span class="ss">:body</span> <span class="o">=</span><span class="n">render_message</span><span class="p">(</span><span class="s2">&quot;registration_confirmation&quot;</span><span class="p">,</span> <span class="ss">:user</span> <span class="o">=</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">end</span>
+</code></pre></div>
 
 
 <p>The from field can be your own or your domains email address. Please check if the from for field has invalid email the user will not be able to reply .</p>
@@ -1000,23 +991,22 @@ This tutorial is about how to send an email using gmail free service in Ruby on 
 
 <p>Now we will create a view which would form a the email template .It is named as same as the method in the model user_mailer ie. Send_email.html.erb</p>
 
-<div>
-  <pre><code class='ruby'>&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;gt;
-    h3 { color: #f00; }
-    ul { list-style: none; }
-    Your account signup details are below
-    Name:  
-    Login: 
-    Image: 
-    Content:</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="s2">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+    <span class="n">h3</span> <span class="p">{</span> <span class="ss">color</span><span class="p">:</span> <span class="c1">#f00; }</span>
+    <span class="n">ul</span> <span class="p">{</span> <span class="n">list</span><span class="o">-</span><span class="ss">style</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span> <span class="p">}</span>
+    <span class="no">Your</span> <span class="n">account</span> <span class="n">signup</span> <span class="n">details</span> <span class="n">are</span> <span class="n">below</span>
+    <span class="ss">Name</span><span class="p">:</span>  
+    <span class="ss">Login</span><span class="p">:</span> 
+    <span class="ss">Image</span><span class="p">:</span> 
+    <span class="ss">Content</span><span class="p">:</span> 
+</code></pre></div>
 
 
 <p>In the end add a line to the create method of the Users_controller</p>
 
-<div>
-  <pre><code class='ruby'>UserMailer.deliver_send_email(@user)</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby">    <span class="no">UserMailer</span><span class="o">.</span><span class="n">deliver_send_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">)</span>
+        
+</code></pre></div>
 
 
 <p>The method is referred to as deliver_send_email because rails appends it to a mailer method.</p>

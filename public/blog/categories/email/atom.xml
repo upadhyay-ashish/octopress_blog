@@ -4,7 +4,7 @@
   <title><![CDATA[Category: email | Möbius Idea's]]></title>
   <link href="http://www.ashish-upadhyay.com/blog/categories/email/atom.xml" rel="self"/>
   <link href="http://www.ashish-upadhyay.com/"/>
-  <updated>2013-03-31T08:51:23+05:30</updated>
+  <updated>2013-03-31T08:57:56+05:30</updated>
   <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
@@ -27,39 +27,33 @@ model and views.</p>
 
 <h3>Creating Demo project</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a User model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a Mailer model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Setting up the development.rb for configuring application settings to</h3>
 
@@ -67,68 +61,62 @@ model and views.</p>
 
 <h4>In development.rb</h4>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
- :enable_starttls_auto =&amp;amp;gt; true,
- :address =&amp;amp;gt; 'smtp.gmail.com',
- :port =&amp;amp;gt; 587,
- :domain =&amp;amp;gt; 'your.domain.com',
- :authentication =&amp;amp;gt; :login,
- :content_type =&amp;amp;gt; &quot;text/html&quot;,
- :user_name =&amp;amp;gt; 'username',
- :password =&amp;amp;gt; 'password'
-}
+<span class="sr">&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp</span>
+<span class="sr">config.action_mailer.smtp_settings = {</span>
+<span class="sr"> :enable_starttls_auto =&amp;amp;gt; true,</span>
+<span class="sr"> :address =&amp;amp;gt; &#39;smtp.gmail.com&#39;,</span>
+<span class="sr"> :port =&amp;amp;gt; 587,</span>
+<span class="sr"> :domain =&amp;amp;gt; &#39;your.domain.com&#39;,</span>
+<span class="sr"> :authentication =&amp;amp;gt; :login,</span>
+<span class="sr"> :content_type =&amp;amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2"> :user_name =&amp;amp;gt; &#39;username&#39;,</span>
+<span class="s2"> :password =&amp;amp;gt; &#39;password&#39;</span>
+<span class="s2">}</span>
 
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-&lt;/code&gt;&lt;/pre&gt;
+<span class="s2">config.action_mailer.perform_deliveries = true</span>
+<span class="s2">config.action_mailer.raise_delivery_errors = true</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 Remember these are the basic settings needed to send mails from gmail ,other server may
 have different settings.</p>
 
 <h3>Creating the mailer</h3>
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;def send_email(user)
-   recipients  user.email
-   from        &quot;webmaster@example.com&quot;
-   subject     &quot;Thank you for Registering&quot;
-   part :content_type =&amp;gt; &quot;text/html&quot;,
-    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;def send_email(user)</span>
+<span class="sr">   recipients  user.email</span>
+<span class="sr">   from        &quot;webmaster@example.com&quot;</span>
+<span class="sr">   subject     &quot;Thank you for Registering&quot;</span>
+<span class="sr">   part :content_type =&amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2">    :body =&amp;gt; render_message(&quot;</span><span class="n">registration_confirmation</span><span class="s2">&quot;, :user =&amp;gt; user)</span>
+<span class="s2">end</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating Email Template</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
-h3 { color: #f00; }
-ul { list-style: none; }
-Your account signup details are below
-Name:  
-Login: 
-Image: 
-Content: 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="no">TR</span><span class="o">/</span><span class="n">html4</span><span class="o">/</span><span class="n">loose</span><span class="o">.</span><span class="n">dtd</span><span class="s2">&quot;&amp;amp;gt;</span>
+<span class="s2">h3 { color: #f00; }</span>
+<span class="s2">ul { list-style: none; }</span>
+<span class="s2">Your account signup details are below</span>
+<span class="s2">Name:  </span>
+<span class="s2">Login: </span>
+<span class="s2">Image: </span>
+<span class="s2">Content: </span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
 run the server and try creating a new user . The email is sent to the address
 the user enters for the new record.</p>
@@ -149,39 +137,33 @@ model and views.</p>
 
 <h3>Creating Demo project</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a User model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a Mailer model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Setting up the development.rb for configuring application settings to</h3>
 
@@ -189,68 +171,62 @@ model and views.</p>
 
 <h4>In development.rb</h4>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
- :enable_starttls_auto =&amp;amp;gt; true,
- :address =&amp;amp;gt; 'smtp.gmail.com',
- :port =&amp;amp;gt; 587,
- :domain =&amp;amp;gt; 'your.domain.com',
- :authentication =&amp;amp;gt; :login,
- :content_type =&amp;amp;gt; &quot;text/html&quot;,
- :user_name =&amp;amp;gt; 'username',
- :password =&amp;amp;gt; 'password'
-}
+<span class="sr">&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp</span>
+<span class="sr">config.action_mailer.smtp_settings = {</span>
+<span class="sr"> :enable_starttls_auto =&amp;amp;gt; true,</span>
+<span class="sr"> :address =&amp;amp;gt; &#39;smtp.gmail.com&#39;,</span>
+<span class="sr"> :port =&amp;amp;gt; 587,</span>
+<span class="sr"> :domain =&amp;amp;gt; &#39;your.domain.com&#39;,</span>
+<span class="sr"> :authentication =&amp;amp;gt; :login,</span>
+<span class="sr"> :content_type =&amp;amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2"> :user_name =&amp;amp;gt; &#39;username&#39;,</span>
+<span class="s2"> :password =&amp;amp;gt; &#39;password&#39;</span>
+<span class="s2">}</span>
 
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-&lt;/code&gt;&lt;/pre&gt;
+<span class="s2">config.action_mailer.perform_deliveries = true</span>
+<span class="s2">config.action_mailer.raise_delivery_errors = true</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 Remember these are the basic settings needed to send mails from gmail ,other server may
 have different settings.</p>
 
 <h3>Creating the mailer</h3>
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;def send_email(user)
-   recipients  user.email
-   from        &quot;webmaster@example.com&quot;
-   subject     &quot;Thank you for Registering&quot;
-   part :content_type =&amp;gt; &quot;text/html&quot;,
-    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;def send_email(user)</span>
+<span class="sr">   recipients  user.email</span>
+<span class="sr">   from        &quot;webmaster@example.com&quot;</span>
+<span class="sr">   subject     &quot;Thank you for Registering&quot;</span>
+<span class="sr">   part :content_type =&amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2">    :body =&amp;gt; render_message(&quot;</span><span class="n">registration_confirmation</span><span class="s2">&quot;, :user =&amp;gt; user)</span>
+<span class="s2">end</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating Email Template</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
-h3 { color: #f00; }
-ul { list-style: none; }
-Your account signup details are below
-Name:  
-Login: 
-Image: 
-Content: 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="no">TR</span><span class="o">/</span><span class="n">html4</span><span class="o">/</span><span class="n">loose</span><span class="o">.</span><span class="n">dtd</span><span class="s2">&quot;&amp;amp;gt;</span>
+<span class="s2">h3 { color: #f00; }</span>
+<span class="s2">ul { list-style: none; }</span>
+<span class="s2">Your account signup details are below</span>
+<span class="s2">Name:  </span>
+<span class="s2">Login: </span>
+<span class="s2">Image: </span>
+<span class="s2">Content: </span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
 run the server and try creating a new user . The email is sent to the address
 the user enters for the new record.</p>
@@ -271,39 +247,33 @@ model and views.</p>
 
 <h3>Creating Demo project</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a User model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a Mailer model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Setting up the development.rb for configuring application settings to</h3>
 
@@ -311,68 +281,62 @@ model and views.</p>
 
 <h4>In development.rb</h4>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
- :enable_starttls_auto =&amp;amp;gt; true,
- :address =&amp;amp;gt; 'smtp.gmail.com',
- :port =&amp;amp;gt; 587,
- :domain =&amp;amp;gt; 'your.domain.com',
- :authentication =&amp;amp;gt; :login,
- :content_type =&amp;amp;gt; &quot;text/html&quot;,
- :user_name =&amp;amp;gt; 'username',
- :password =&amp;amp;gt; 'password'
-}
+<span class="sr">&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp</span>
+<span class="sr">config.action_mailer.smtp_settings = {</span>
+<span class="sr"> :enable_starttls_auto =&amp;amp;gt; true,</span>
+<span class="sr"> :address =&amp;amp;gt; &#39;smtp.gmail.com&#39;,</span>
+<span class="sr"> :port =&amp;amp;gt; 587,</span>
+<span class="sr"> :domain =&amp;amp;gt; &#39;your.domain.com&#39;,</span>
+<span class="sr"> :authentication =&amp;amp;gt; :login,</span>
+<span class="sr"> :content_type =&amp;amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2"> :user_name =&amp;amp;gt; &#39;username&#39;,</span>
+<span class="s2"> :password =&amp;amp;gt; &#39;password&#39;</span>
+<span class="s2">}</span>
 
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-&lt;/code&gt;&lt;/pre&gt;
+<span class="s2">config.action_mailer.perform_deliveries = true</span>
+<span class="s2">config.action_mailer.raise_delivery_errors = true</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 Remember these are the basic settings needed to send mails from gmail ,other server may
 have different settings.</p>
 
 <h3>Creating the mailer</h3>
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;def send_email(user)
-   recipients  user.email
-   from        &quot;webmaster@example.com&quot;
-   subject     &quot;Thank you for Registering&quot;
-   part :content_type =&amp;gt; &quot;text/html&quot;,
-    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;def send_email(user)</span>
+<span class="sr">   recipients  user.email</span>
+<span class="sr">   from        &quot;webmaster@example.com&quot;</span>
+<span class="sr">   subject     &quot;Thank you for Registering&quot;</span>
+<span class="sr">   part :content_type =&amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2">    :body =&amp;gt; render_message(&quot;</span><span class="n">registration_confirmation</span><span class="s2">&quot;, :user =&amp;gt; user)</span>
+<span class="s2">end</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating Email Template</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
-h3 { color: #f00; }
-ul { list-style: none; }
-Your account signup details are below
-Name:  
-Login: 
-Image: 
-Content: 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="no">TR</span><span class="o">/</span><span class="n">html4</span><span class="o">/</span><span class="n">loose</span><span class="o">.</span><span class="n">dtd</span><span class="s2">&quot;&amp;amp;gt;</span>
+<span class="s2">h3 { color: #f00; }</span>
+<span class="s2">ul { list-style: none; }</span>
+<span class="s2">Your account signup details are below</span>
+<span class="s2">Name:  </span>
+<span class="s2">Login: </span>
+<span class="s2">Image: </span>
+<span class="s2">Content: </span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
 run the server and try creating a new user . The email is sent to the address
 the user enters for the new record.</p>
@@ -393,39 +357,33 @@ model and views.</p>
 
 <h3>Creating Demo project</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails new mail_demo –d mysql </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a User model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g scaffold User name:string email:string content:string </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a Mailer model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails g mailer user_mailer </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Setting up the development.rb for configuring application settings to</h3>
 
@@ -433,68 +391,62 @@ model and views.</p>
 
 <h4>In development.rb</h4>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
- :enable_starttls_auto =&amp;amp;gt; true,
- :address =&amp;amp;gt; 'smtp.gmail.com',
- :port =&amp;amp;gt; 587,
- :domain =&amp;amp;gt; 'your.domain.com',
- :authentication =&amp;amp;gt; :login,
- :content_type =&amp;amp;gt; &quot;text/html&quot;,
- :user_name =&amp;amp;gt; 'username',
- :password =&amp;amp;gt; 'password'
-}
+<span class="sr">&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp</span>
+<span class="sr">config.action_mailer.smtp_settings = {</span>
+<span class="sr"> :enable_starttls_auto =&amp;amp;gt; true,</span>
+<span class="sr"> :address =&amp;amp;gt; &#39;smtp.gmail.com&#39;,</span>
+<span class="sr"> :port =&amp;amp;gt; 587,</span>
+<span class="sr"> :domain =&amp;amp;gt; &#39;your.domain.com&#39;,</span>
+<span class="sr"> :authentication =&amp;amp;gt; :login,</span>
+<span class="sr"> :content_type =&amp;amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2"> :user_name =&amp;amp;gt; &#39;username&#39;,</span>
+<span class="s2"> :password =&amp;amp;gt; &#39;password&#39;</span>
+<span class="s2">}</span>
 
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-&lt;/code&gt;&lt;/pre&gt;
+<span class="s2">config.action_mailer.perform_deliveries = true</span>
+<span class="s2">config.action_mailer.raise_delivery_errors = true</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 Remember these are the basic settings needed to send mails from gmail ,other server may
 have different settings.</p>
 
 <h3>Creating the mailer</h3>
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model  :
-<div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;def send_email(user)
-   recipients  user.email
-   from        &quot;webmaster@example.com&quot;
-   subject     &quot;Thank you for Registering&quot;
-   part :content_type =&amp;gt; &quot;text/html&quot;,
-    :body =&amp;gt; render_message(&quot;registration_confirmation&quot;, :user =&amp;gt; user)
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;def send_email(user)</span>
+<span class="sr">   recipients  user.email</span>
+<span class="sr">   from        &quot;webmaster@example.com&quot;</span>
+<span class="sr">   subject     &quot;Thank you for Registering&quot;</span>
+<span class="sr">   part :content_type =&amp;gt; &quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2">    :body =&amp;gt; render_message(&quot;</span><span class="n">registration_confirmation</span><span class="s2">&quot;, :user =&amp;gt; user)</span>
+<span class="s2">end</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating Email Template</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
-h3 { color: #f00; }
-ul { list-style: none; }
-Your account signup details are below
-Name:  
-Login: 
-Image: 
-Content: 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="no">TR</span><span class="o">/</span><span class="n">html4</span><span class="o">/</span><span class="n">loose</span><span class="o">.</span><span class="n">dtd</span><span class="s2">&quot;&amp;amp;gt;</span>
+<span class="s2">h3 { color: #f00; }</span>
+<span class="s2">ul { list-style: none; }</span>
+<span class="s2">Your account signup details are below</span>
+<span class="s2">Name:  </span>
+<span class="s2">Login: </span>
+<span class="s2">Image: </span>
+<span class="s2">Content: </span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 The method is referred to as deliver_send_email because rails appends it to a mailer method.Now
 run the server and try creating a new user . The email is sent to the address
 the user enters for the new record.</p>
@@ -513,64 +465,56 @@ This tutorial is about how to send an email using gmail free service in Ruby on 
 
 <h3>Creating Demo project</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;rails mail_demo –d mysql        
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;rails mail_demo –d mysql        </span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a User model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;ruby script/generate scaffold User name:string email:string content:string
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;ruby script/</span><span class="n">generate</span> <span class="n">scaffold</span> <span class="no">User</span> <span class="nb">name</span><span class="ss">:string</span> <span class="ss">email</span><span class="p">:</span><span class="n">string</span> <span class="ss">content</span><span class="p">:</span><span class="n">string</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <h3>Creating a Mailer model</h3>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;ruby script/generate mailer user_mailer
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;ruby script/</span><span class="n">generate</span> <span class="n">mailer</span> <span class="n">user_mailer</span>
+<span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+</code></pre></div></p>
 
 <h3>Setting up the development.rb for configuring application settings to access mail smtp server</h3>
 
 <h4>In development.rb</h4>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp
-config.action_mailer.raise_delivery_errors = true
-config.action_mailer.smtp_settings = {
- :enable_starttls_auto =true,
- :address ='smtp.gmail.com',
- :port =587,
- :domain ='your.domain.com',
- :authentication =:login,
- :content_type =&quot;text/html&quot;,
- :user_name =your full username example xyz@gmail.com',
- :password ='password'
-}
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;config.action_mailer.delivery_method = :smtp</span>
+<span class="sr">config.action_mailer.raise_delivery_errors = true</span>
+<span class="sr">config.action_mailer.smtp_settings = {</span>
+<span class="sr"> :enable_starttls_auto =true,</span>
+<span class="sr"> :address =&#39;smtp.gmail.com&#39;,</span>
+<span class="sr"> :port =587,</span>
+<span class="sr"> :domain =&#39;your.domain.com&#39;,</span>
+<span class="sr"> :authentication =:login,</span>
+<span class="sr"> :content_type =&quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2"> :user_name =your full username example xyz@gmail.com&#39;,</span>
+<span class="s2"> :password =&#39;password&#39;</span>
+<span class="s2">}</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <p>Remember these are the basic settings needed to send mails from gmail ,other server may have different settings .</p>
 
@@ -578,54 +522,48 @@ config.action_mailer.smtp_settings = {
 
 <p>Now we will write the method in user_mailer model to send the mail .Remember in the mailer model</p>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;def send_email(user)
- recipients user.emailÏ
- from &quot;webmaster@example.com&quot;
- subject &quot;Thank you for Registering&quot;
- part :content_type =&quot;text/html&quot;,
- :body =render_message(&quot;registration_confirmation&quot;, :user =user)
-end
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;def send_email(user)</span>
+<span class="sr"> recipients user.emailÏ</span>
+<span class="sr"> from &quot;webmaster@example.com&quot;</span>
+<span class="sr"> subject &quot;Thank you for Registering&quot;</span>
+<span class="sr"> part :content_type =&quot;text/</span><span class="n">html</span><span class="s2">&quot;,</span>
+<span class="s2"> :body =render_message(&quot;</span><span class="n">registration_confirmation</span><span class="s2">&quot;, :user =user)</span>
+<span class="s2">end</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 The from field can be your own or your domains email address. Please check if the from for field has invalid email the user will not be able to reply .</p>
 
 <h3>Creating Email Template</h3>
 
 <p>Now we will create a view which would form a the email template .It is named as same as the method in the model user_mailer ie. Send_email.html.erb</p>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;amp;gt;
-h3 { color: #f00; }
-ul { list-style: none; }
-Your account signup details are below
-Name:  
-Login: 
-Image: 
-Content: 
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="no">TR</span><span class="o">/</span><span class="n">html4</span><span class="o">/</span><span class="n">loose</span><span class="o">.</span><span class="n">dtd</span><span class="s2">&quot;&amp;amp;gt;</span>
+<span class="s2">h3 { color: #f00; }</span>
+<span class="s2">ul { list-style: none; }</span>
+<span class="s2">Your account signup details are below</span>
+<span class="s2">Name:  </span>
+<span class="s2">Login: </span>
+<span class="s2">Image: </span>
+<span class="s2">Content: </span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-
+<span class="s2">&lt;p&gt;</span>
+</code></pre></div>
 In the end add a line to the create method of the Users_controller</p>
 
-<p><div>
-  <pre><code class='ruby'>&lt;/p&gt;
+<p><div class="highlight"><pre><code class="ruby"><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
-&lt;pre&gt;&lt;code&gt;UserMailer.deliver_send_email(@user)
-&lt;/code&gt;&lt;/pre&gt;
+<span class="sr">&lt;pre&gt;&lt;code&gt;UserMailer.deliver_send_email(@user)</span>
+<span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<span class="sr">&lt;p&gt;</span>
+</code></pre></div></p>
 
 <p>The method is referred to as deliver_send_email because rails appends it to a mailer method.</p>
 
