@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://ashish-upadhyay.com
-title: Ashish Upadhyay
+title: Möbius Idea's
 # subtitle: Möbius Idea's An infinite loop
 author: Ashish Upadhyay
 simple_search: http://google.com/search
@@ -22,7 +22,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: ashish.upadhyaye@gmail.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -39,7 +39,7 @@ category_dir: blog/categories
 markdown: rdiscount
 pygments: false # default python pygments have been replaced by pygments.rb
 
-paginate: 5         # Posts per page on the blog index
+paginate: 10         # Posts per page on the blog index
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
@@ -59,10 +59,13 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
+# 
+# 
+facebook_user: bilLaaBadMash
 
 # Github repositories
 github_user: upadhyay-ashish
-github_repo_count: 4
+github_repo_count: 2
 github_show_profile_link: true
 github_skip_forks: false
 
@@ -96,4 +99,4 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: true
-facebook_user: billaabadmash
+instagram_user: zapper320

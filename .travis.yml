@@ -1,5 +1,19 @@
+---
 language: ruby
 rvm:
-  - 1.9.3
-  - 1.9.2
+- 1.9.3
+- 1.9.2
 script: bundle exec rake install; bundle exec rake generate
+after_success:
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - git remote add staging git@heroku.com:blog-ashish.git
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - heroku keys:clear
+  - yes | heroku keys:add
+  - yes | git push staging master
+env:
+  global:
+  - secure: ! 'nRSi06zyuXOtwFVMQPu/uFSVLpp4wGvxtrFEGWPaSCGQWEor1XpmKjSgt7SmuFWQRaHhcYJXvZaGUcfojffVrFFW6gYziR+RwamHRK/j3wo3t74oCclladkW73mcOcYRCpmczoFs8Bn693jgL/5nhIKHhP+P9nGb3HchQcNFpvM='
