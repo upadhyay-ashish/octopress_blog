@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: actionmailer | Möbius Idea's]]></title>
-  <link href="http://ashish-upadhyay.com/blog/categories/actionmailer/atom.xml" rel="self"/>
-  <link href="http://ashish-upadhyay.com/"/>
-  <updated>2013-03-31T06:13:56+05:30</updated>
-  <id>http://ashish-upadhyay.com/</id>
+  <link href="http://www.ashish-upadhyay.com/blog/categories/actionmailer/atom.xml" rel="self"/>
+  <link href="http://www.ashish-upadhyay.com/"/>
+  <updated>2013-03-31T07:14:27+05:30</updated>
+  <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
     <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Action Mailer]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3/"/>
     <updated>2011-11-11T01:45:45+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
+    <id>http://www.ashish-upadhyay.com/blog/2011/11/11/Action-Mailer-for-Rails-3</id>
     <content type="html"><![CDATA[<h2>For rails 3</h2>
 
 <p>Action Mailer allows you to send email from your application using a mailer
@@ -137,9 +137,9 @@ the user enters for the new record.</p>
   
   <entry>
     <title type="html"><![CDATA[Action Mailer 2.3.9]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
     <updated>2011-11-11T01:35:14+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
+    <id>http://www.ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
     <content type="html"><![CDATA[<h1>Easy email delivery and testing</h1>
 
 <p>Action Mailer allows you to send email from your application using a mailer model and views.<br/>
@@ -269,9 +269,9 @@ In the end add a line to the create method of the Users_controller</p>
   
   <entry>
     <title type="html"><![CDATA[Action Mailer 2.3.9]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
     <updated>2011-11-11T01:35:14+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
+    <id>http://www.ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
     <content type="html"><![CDATA[<h1>Easy email delivery and testing</h1>
 
 <p>Action Mailer allows you to send email from your application using a mailer model and views.<br/>
@@ -401,9 +401,9 @@ In the end add a line to the create method of the Users_controller</p>
   
   <entry>
     <title type="html"><![CDATA[Action Mailer 2.3.9]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial/"/>
     <updated>2011-11-11T01:35:14+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
+    <id>http://www.ashish-upadhyay.com/blog/2011/11/11/ActionMailer-2.3.9-Tutorial</id>
     <content type="html"><![CDATA[<h1>Easy email delivery and testing</h1>
 
 <p>Action Mailer allows you to send email from your application using a mailer model and views.<br/>

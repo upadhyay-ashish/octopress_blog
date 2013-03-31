@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: to | Möbius Idea's]]></title>
-  <link href="http://ashish-upadhyay.com/blog/categories/to/atom.xml" rel="self"/>
-  <link href="http://ashish-upadhyay.com/"/>
-  <updated>2013-03-31T06:13:56+05:30</updated>
-  <id>http://ashish-upadhyay.com/</id>
+  <link href="http://www.ashish-upadhyay.com/blog/categories/to/atom.xml" rel="self"/>
+  <link href="http://www.ashish-upadhyay.com/"/>
+  <updated>2013-03-31T07:14:27+05:30</updated>
+  <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
     <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
     <updated>2012-09-28T00:33:52+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
     <content type="html"><![CDATA[<ul>
 <li><p>Install <code>git-svn</code> on ubuntu or linux</p>
 
@@ -50,9 +50,9 @@ Next, move the rest of the references under refs/remotes to be local branches:</
   
   <entry>
     <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
     <updated>2012-09-28T00:33:52+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
     <content type="html"><![CDATA[<ul>
 <li><p>Install <code>git-svn</code> on ubuntu or linux</p>
 
@@ -85,9 +85,9 @@ Next, move the rest of the references under refs/remotes to be local branches:</
   
   <entry>
     <title type="html"><![CDATA[Migrating code from SVN to GIT]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT/"/>
     <updated>2012-09-28T00:33:52+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/09/28/Migrating-code-from-SVN-to-GIT</id>
     <content type="html"><![CDATA[<ul>
 <li><p>Install <code>git-svn</code> on ubuntu or linux</p>
 

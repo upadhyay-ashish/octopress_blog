@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: posts | Möbius Idea's]]></title>
-  <link href="http://ashish-upadhyay.com/blog/categories/posts/atom.xml" rel="self"/>
-  <link href="http://ashish-upadhyay.com/"/>
-  <updated>2013-03-31T06:13:56+05:30</updated>
-  <id>http://ashish-upadhyay.com/</id>
+  <link href="http://www.ashish-upadhyay.com/blog/categories/posts/atom.xml" rel="self"/>
+  <link href="http://www.ashish-upadhyay.com/"/>
+  <updated>2013-03-31T07:14:27+05:30</updated>
+  <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
     <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Rubymotion for iOS application development]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2013/03/23/Rubymotion/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2013/03/23/Rubymotion/"/>
     <updated>2013-03-23T00:00:00+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2013/03/23/Rubymotion</id>
+    <id>http://www.ashish-upadhyay.com/blog/2013/03/23/Rubymotion</id>
     <content type="html"><![CDATA[<h2>TCS RSS Feed Reader  123</h2>
 
 <p><a href="https://github.com/upadhyay-ashish/TCSRssReader">TCS RSS Feed</a></p>
@@ -65,9 +65,9 @@
   
   <entry>
     <title type="html"><![CDATA[Capistrano]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/08/10/Capistrano-%2B-GIT-%3A-Too-many-arguments-while-deployment/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-%2B-GIT-%3A-Too-many-arguments-while-deployment/"/>
     <updated>2012-08-10T00:00:00+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/08/10/Capistrano-+-GIT-:-Too-many-arguments-while-deployment</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/08/10/Capistrano-+-GIT-:-Too-many-arguments-while-deployment</id>
     <content type="html"><![CDATA[<h2>Too many arguments while deployment</h2>
 
 <p><strong>Issue : shell command failed with return code 33024</strong></p>
@@ -107,9 +107,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Setting up Rhomobile with an Android Emulator]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/02/11/Setting-up-RHODES-with-an-Android-Emulator/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/02/11/Setting-up-RHODES-with-an-Android-Emulator/"/>
     <updated>2012-02-11T00:00:00+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/02/11/Setting-up-RHODES-with-an-Android-Emulator</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/02/11/Setting-up-RHODES-with-an-Android-Emulator</id>
     <content type="html"><![CDATA[<ul>
 <li><p>Installing Ruby. Please follow the sequence of commands given below to install ruby on ubuntu using RVM.</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: natiive | Möbius Idea's]]></title>
-  <link href="http://ashish-upadhyay.com/blog/categories/natiive/atom.xml" rel="self"/>
-  <link href="http://ashish-upadhyay.com/"/>
-  <updated>2013-03-31T06:13:56+05:30</updated>
-  <id>http://ashish-upadhyay.com/</id>
+  <link href="http://www.ashish-upadhyay.com/blog/categories/natiive/atom.xml" rel="self"/>
+  <link href="http://www.ashish-upadhyay.com/"/>
+  <updated>2013-03-31T07:14:27+05:30</updated>
+  <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
     <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Creating a native iOS application !]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application/"/>
     <updated>2012-06-13T19:47:34+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application</id>
     <content type="html"><![CDATA[<h3>Installing XCode on the system</h3>
 
 <ul>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: imagemagick | Möbius Idea's]]></title>
-  <link href="http://ashish-upadhyay.com/blog/categories/imagemagick/atom.xml" rel="self"/>
-  <link href="http://ashish-upadhyay.com/"/>
-  <updated>2013-03-31T06:13:56+05:30</updated>
-  <id>http://ashish-upadhyay.com/</id>
+  <link href="http://www.ashish-upadhyay.com/blog/categories/imagemagick/atom.xml" rel="self"/>
+  <link href="http://www.ashish-upadhyay.com/"/>
+  <updated>2013-03-31T07:14:27+05:30</updated>
+  <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
     <email><![CDATA[ashish.upadhyaye@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing RMagick with Imagemagic on Windows 7/Vista]]></title>
-    <link href="http://ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7/"/>
+    <link href="http://www.ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7/"/>
     <updated>2012-08-09T14:00:18+05:30</updated>
-    <id>http://ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7</id>
+    <id>http://www.ashish-upadhyay.com/blog/2012/08/09/Installing-RMagick-with-Imagemagic-on-Windows-7</id>
     <content type="html"><![CDATA[<p>Working with Windows 7 64bit and Ruby 1.9.3.</p>
 
 <ul>

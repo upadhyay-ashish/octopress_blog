@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://ashish-upadhyay.com
+url: http://www.ashish-upadhyay.com
 title: Möbius Idea's
 # subtitle: Möbius Idea's An infinite loop
 author: Ashish Upadhyay
@@ -100,3 +100,4 @@ google_analytics_tracking_id:
 # Facebook Like
 facebook_like: true
 instagram_user: zapper320
+instagram_client: f542a1f286f543638274fa4764782934
