@@ -13,7 +13,7 @@ after_success:
   - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
   - heroku keys:clear
   - yes | heroku keys:add
-  - yes
+  - yes 
   - yes | git push staging master
 env:
   global:
