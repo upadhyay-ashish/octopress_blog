@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Starting With Rubymotion - Möbius Idea's</title>
+  <meta name="author" content="Ashish Upadhyay">
+  <link rel="author" href="humans.txt">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+    
+  
+  <meta name="description" content="Rubymotion RubyMotion is a revolutionary toolchain for iOS.
+It lets you quickly develop and test native iOS applications for iPhone or iPad, all &hellip;">
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Möbius Idea's" type="application/atom+xml">
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Möbius Idea's" />
+  <meta name="og:title" content="Starting With Rubymotion" />
+  <meta name="og:description" content="Rubymotion RubyMotion is a revolutionary toolchain for iOS.
+It lets you quickly develop and test native iOS applications for iPhone or iPad, all &hellip;" />
+  <meta name="og:url" content="http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/"/>
+  <meta name="url" content="http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/">
+  
+  <meta name="subject" content="cocoaiosrubyrubymotion"/>
+  <meta name="category" content="cocoaiosrubyrubymotion"/>
+  
+  <meta name="distribution" content="global">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39566611-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Möbius Idea's</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    </ul>
+    <ul class="nav" data-subscription="rss">
+      <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+      
+    </ul>
+      
+    <form class="navbar-form" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:www.ashish-upadhyay.com" />
+        <input class="span2" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+      
+    
+  </div>
+</div>
+</nav>
+  <div class="wrapper_single">
+    <div class="container">
+      <article class="span8 offset2" role="article">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title">Starting With Rubymotion</h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <a href="https://plus.google.com/111369575548975907349?rel=author"><span class="fn">Ashish Upadhyay</span></a></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T01:17:00+05:30" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cocoa/'>cocoa</a>, <a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/rubymotion/'>rubymotion</a>
+  
+</span>
+
+
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3><a href="http://www.rubymotion.com">Rubymotion</a></h3>
+
+<blockquote><p>RubyMotion is a revolutionary toolchain for iOS.
+It lets you quickly develop and test native iOS applications for iPhone or iPad, all using the awesome Ruby language you know and love.</p></blockquote>
+
+<hr />
+
+<p> <em>To start with Rubymotion we would need</em></p>
+
+<ul>
+<li>A Mac</li>
+<li>Ruby</li>
+<li>xCode</li>
+<li>Command Line Build Tools</li>
+<li>Rubymotion</li>
+<li>Text editor</li>
+<li>Little knowledge of the Cocoa API&#8217;s</li>
+<li>Faith, Hope and Goodwill !</li>
+</ul>
+
+
+<hr />
+
+<p>Assumming that the setup is done without any issues, Lets start</p>
+
+<p><em>Check for an update for the Rubymotion installer</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo motion update</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/rubymotion/rm-update.png" alt="Alt Icon" /></p>
+
+<p><em>Creating our first application</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>motion create RssReader</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/rubymotion/rm-create.png" alt="Alt Icon" /></p>
+
+<p><em>Structure of the Rubymotion application</em>
+<img src="/images/rubymotion/rm-structure.png" alt="Alt Icon" /></p>
+
+<p><em>Explaining the structure of the application</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>app_delegate.rb       : Entry point of an iOS application
+</span><span class='line'>Default-568h@2x.png   : Default Splash Screen for iPhone5
+</span><span class='line'>main_spec.rb          sd: Main spec file
+</span><span class='line'>Rakefile              : Application configuration</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Running the application on the Simulator</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/rubymotion/rm-simulator.png" alt="Alt Icon" /></p>
+
+<blockquote><p>So this is the first very basic application which we have put up and running on a simulator.
+I will be moving step by step from the basics of using Ruby alongwith Cocoa and creating a Demo application throught it.</p></blockquote>
+
+<hr />
+
+<blockquote><p>Thanks</p></blockquote>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+  
+    <span class="byline author vcard">by <a href="https://plus.google.com/111369575548975907349?rel=author"><span class="fn">Ashish Upadhyay</span></a></span>
+  
+
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T01:17:00+05:30" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time>
+      
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cocoa/'>cocoa</a>, <a class='category' href='/blog/categories/ios/'>ios</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/rubymotion/'>rubymotion</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/" data-via="_zapper320" data-counturl="http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+      <a class="pull-left" href="/blog/2013/03/23/Rubymotion/" title="Previous Post: Using Rubymotion for iOS application development">&laquo; Using Rubymotion for iOS application development</a>
+    
+    
+  </footer>
+
+</div>
+
+        
+          <div class="article-format">
+            <h1>Comments</h1>
+            <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+          </div>
+        
+      </article>
+    </div>
+  </div>
+  <div id="footer-widgets">
+  <div class="container">
+    <div class="row">
+  <div class="span3">
+    <h2>recent posts</h2>
+    <ul class="recent_posts">
+      
+        <li>
+          <a href="/blog/2013/04/30/starting-with-rubymotion/">Starting With Rubymotion</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/03/23/Rubymotion/">Using Rubymotion for iOS application development</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/02/25/Replacing-master-with-a-branch-GIT/">Replacing master with a branch GIT</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/01/08/Using-Oracle-JDBC-with-JRuby-on-Mac-OSx/">Using Oracle JDBC with JRuby on Mac OSx</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2012/12/08/Using-nested_forms-gem-dropbox-paperclip-twitter-bootstrap/">Using nested_forms gem + dropbox-paperclip + twitter-bootstrap</a>
+        </li>
+      
+    </ul>
+    <h2><a href="/blog/archives">archives</a></h2>
+  </div>
+  <div class="span3">
+    
+
+  </div>
+  <div class="span4">
+    
+<h2>twitter</h2>
+<a href="https://twitter.com/_zapper320" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @_zapper320</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="tweet" data-twitter-user="_zapper320">
+</div>
+
+
+  </div>
+  <div class="span2">
+    <h2>found on</h2>
+
+<a href="https://github.com/upadhyay-ashish/" rel="tooltip" title="Github"><img class="social_icon" title="Github" alt="github icon" src="/images/icons/glyphicons_381_github.png"></a>
+
+
+
+
+
+<a href="http://rorashish.blogspot.com/" rel="tooltip" title="Blogger"><img class="social_icon" title="Blogger" alt="stack blogger icon" src="/images/icons/glyphicons_385_blogger.png"></a>
+
+
+
+<a href="http://facebook.com/bilLaaBadMash/" rel="tooltip" title="Facebook"><img class="social_icon" title="Facebook" alt="facebook icon" src="/images/icons/glyphicons_410_facebook.png"></a>
+
+
+
+
+
+<a href="http://twitter.com/_zapper320" rel="tooltip" title="Twitter"><img class="social_icon" title="Twitter" alt="Twitter icon" src="/images/icons/glyphicons_411_twitter.png"></a>
+
+
+
+<a href="https://plus.google.com/111369575548975907349?rel=author" rel="tooltip" title="Google Plus"><img class="social_icon" title="Google Plus" alt="Google Plus icon" src="/images/icons/glyphicons_382_google_plus.png"></a>
+
+
+
+<a href="https://instagram.com/zapper320?ref=badge" rel="tooltip" title="Instagram"><img class="social_icon" title="Instagram" alt="Instagram icon" src="/images/icons/glyphicons_412_instagram.png"></a>
+
+
+<a href="/atom.xml" rel="tooltip" title="RSS"><img class="social_icon" title="RSS" alt="RSS icon" src="/images/icons/glyphicons_417_rss.png"></a>
+
+
+
+
+<h2>contact at</h2>
+<a href="mailto:ashish.upadhyaye@gmail.com">ashish.upadhyaye@gmail.com</a>
+
+
+  </div>
+</div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-left">
+  <a href="/">Möbius Idea's</a>
+  - Copyright &copy; 2013 - Ashish Upadhyay
+</p>
+<p class="pull-right">
+
+</p>
+
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.7.2.min.js" type="text/javascript"><\/script>')</script>
+<script src="/javascripts/libs/bootstrap.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.tweet.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.instagram.js" type="text/javascript"></script>
+<script src="/javascripts/libs/jquery.masonry.min.js" type="text/javascript"></script>
+<script src="/javascripts/custom.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'myblogdev';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/';
+        var disqus_url = 'http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ios | Möbius Idea's]]></title>
   <link href="http://www.ashish-upadhyay.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://www.ashish-upadhyay.com/"/>
-  <updated>2013-03-31T18:39:31+05:30</updated>
+  <updated>2013-04-30T03:28:05+05:30</updated>
   <id>http://www.ashish-upadhyay.com/</id>
   <author>
     <name><![CDATA[Ashish Upadhyay]]></name>
@@ -14,99 +14,72 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Creating a native iOS application !]]></title>
-    <link href="http://www.ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application/"/>
-    <updated>2012-06-13T19:47:34+05:30</updated>
-    <id>http://www.ashish-upadhyay.com/blog/2012/06/13/Creating-a-native-iOS-application</id>
-    <content type="html"><![CDATA[<h3>Installing XCode on the system</h3>
+    <title type="html"><![CDATA[Starting With Rubymotion]]></title>
+    <link href="http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion/"/>
+    <updated>2013-04-30T01:17:00+05:30</updated>
+    <id>http://www.ashish-upadhyay.com/blog/2013/04/30/starting-with-rubymotion</id>
+    <content type="html"><![CDATA[<h3><a href="http://www.rubymotion.com">Rubymotion</a></h3>
+
+<blockquote><p>RubyMotion is a revolutionary toolchain for iOS.
+It lets you quickly develop and test native iOS applications for iPhone or iPad, all using the awesome Ruby language you know and love.</p></blockquote>
+
+<hr />
+
+<p> <em>To start with Rubymotion we would need</em></p>
 
 <ul>
-<li>Download and install <code>XCode</code> from the App Center alongwith the <code>Developer Tools</code></li>
+<li>A Mac</li>
+<li>Ruby</li>
+<li>xCode</li>
+<li>Command Line Build Tools</li>
+<li>Rubymotion</li>
+<li>Text editor</li>
+<li>Little knowledge of the Cocoa API's</li>
+<li>Faith, Hope and Goodwill !</li>
 </ul>
 
 
-<h3>Download the Phonegap SDK</h3>
+<hr />
 
-<ul>
-<li>Download and unzip the Phonegap SDK.</li>
-<li>Now navigate to the <code>iOS directory</code> in the extracted source and run the <code>Cordova-1.7.0.dmg</code> and install it.</li>
-</ul>
+<p>Assumming that the setup is done without any issues, Lets start</p>
 
+<p><em>Check for an update for the Rubymotion installer</em>
+<code>
+sudo motion update
+</code>
+<img src="/images/rubymotion/rm-update.png" alt="Alt Icon" /></p>
 
-<h3>Creating a XCode Project</h3>
+<p><em>Creating our first application</em>
+<code>
+motion create RssReader
+</code></p>
 
-<p>Run <code>XCode</code> and create a new Project</p>
+<p><img src="/images/rubymotion/rm-create.png" alt="Alt Icon" /></p>
 
-<p>Select the template</p>
+<p><em>Structure of the Rubymotion application</em>
+<img src="/images/rubymotion/rm-structure.png" alt="Alt Icon" /></p>
 
-<ul>
-<li><code>Cordova-based Application</code></li>
-</ul>
+<p><em>Explaining the structure of the application</em>
+<code>
+app_delegate.rb          : Entry point of an iOS application
+Default-568h@2x.png     : Default Splash Screen for iPhone5
+main_spec.rb            sd: Main spec file
+Rakefile                : Application configuration
+</code>
+<em>Running the application on the Simulator</em></p>
 
+<p><code>
+rake
+</code></p>
 
-<p>This will create the a new project and include the neccesary Phonegap API Files.</p>
+<p><img src="/images/rubymotion/rm-simulator.png" alt="Alt Icon" /></p>
 
-<h3>Changing the default compiler</h3>
+<blockquote><p>So this is the first very basic application which we have put up and running on a simulator.
+I will be moving step by step from the basics of using Ruby alongwith Cocoa and creating a Demo application throught it.</p></blockquote>
 
-<ul>
-<li>Click on the application name and select <code>BUILD SETTINGS</code> tab in the center pane</li>
-<li>Change the compiler in the <code>BUILD OPTIONS</code> from <code>APPLE LLVM COMPILER</code> to <code>LLVM GCC</code></li>
-</ul>
+<hr />
 
-
-<h3>Build and Run the Project</h3>
-
-<ul>
-<li>Click on the left top of the XCode window selecting the default device as iPad/iPhone Now run the Project. This would invoke the simulator and run the application on it.</li>
-<li>Once the application runs a error will Popup stating the <code>index.html</code> is not found. Close the simulator and return back to the XCode project window.</li>
-</ul>
-
-
-<h3>Include <code>www</code> folder in the project to start with application development</h3>
-
-<ul>
-<li>Right click the project name and select <code>Show in Finder</code></li>
-<li>Drag the <code>www</code> folder from the <code>Finder</code> to the <code>Project</code></li>
-<li>A window pop's up , select to create references to the files.</li>
-</ul>
-
-
-<h3>Again <code>BUILD &amp;amp; RUN</code></h3>
-
-<ul>
-<li>Now again build and run the project in an iPad/iPhone simulatore</li>
-<li>This time it would show up the <code>index.html</code> which is located in the <code>www</code> folder. Also it would show up the <code>Dialog</code> stating that Phonegap was successfully integrated in the application</li>
-</ul>
-
-
-<h3>Download JQuery Mobile bundle</h3>
-
-<p>Download the latest build of JQuery Mobile from  Unzip the contents and add the files in the <code>www</code> folder categorizing the folders as</p>
-
-<ul>
-<li><code>javascripts</code></li>
-<li><code>stylesheets</code></li>
-<li>`images'</li>
-</ul>
-
-
-<h3>Including the JQuery mobile in the application</h3>
-
-<ul>
-<li>Open <code>index.html</code> and create references to the javascript and css files located in the <code>www</code> folder using the html tags</li>
-</ul>
-
-
-<h4>Add a few lines of HTML to the index page and use the JQuery classes and the Phonegap api function calls to implement the features of the native application as desired</h4>
-
-<h3>* not tested though</h3>
-
-<ul>
-<li>Once the application is complete or for on Device testing a <code>Apple's Developer License</code> is required to sign the applications.</li>
-<li>After signing it , push the application to <code>PhoneGap Build</code> .</li>
-<li>Download the build package and deploy to th Device.</li>
-</ul>
-
+<blockquote><p>Thanks</p></blockquote>
 ]]></content>
   </entry>
   
